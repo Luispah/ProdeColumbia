@@ -40,19 +40,37 @@ Diseño de dominio completo
 
 
 
-\## SIGUIENTE
+\## ARQUITECTURA CONGELADA
 
 
 
-ParticipanteTemporada
+Dominio V1 aprobado.
 
 
 
-Competencia
+Pendiente de implementación en Django.
 
 
 
-ParticipacionCompetencia
+\---
+
+
+
+\## IMPLEMENTACIÓN INMEDIATA
+
+
+
+\- ParticipanteTemporada
+
+\- TipoCompetencia
+
+\- Competencia
+
+\- CompetenciaConfig
+
+\- ParticipacionCompetencia
+
+\- InstanciaCompetencia
 
 
 

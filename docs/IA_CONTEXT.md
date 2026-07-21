@@ -208,3 +208,111 @@ Debe rediseñarse correctamente.
 
 Diseñar el modelo de dominio completo antes de agregar más modelos.
 
+
+
+\## Modelo Dominio V1 (congelado)
+
+
+
+Participante
+
+
+
+Categoria
+
+
+
+Temporada
+
+
+
+ParticipanteTemporada
+
+
+
+TipoCompetencia
+
+
+
+Competencia
+
+
+
+CompetenciaConfig
+
+
+
+ParticipacionCompetencia
+
+
+
+InstanciaCompetencia
+
+
+
+InstanciaPartido
+
+
+
+CalendarioReal
+
+
+
+PartidoReal
+
+
+
+Pronostico
+
+
+
+ResultadoPronostico
+
+
+
+ResumenParticipanteInstancia
+
+
+
+Enfrentamiento
+
+
+
+ResultadoCompetencia
+
+
+
+EquipoTemporal
+
+
+
+MiembroEquipoTemporal
+
+
+
+Sorteo
+
+
+
+\---
+
+
+
+\## Decisiones confirmadas
+
+
+
+\- La categoría pertenece a ParticipanteTemporada.
+
+\- Se guardan históricos.
+
+\- Se guardan AF, AV y DA.
+
+\- La Supercopa utilizará equipos temporales.
+
+\- Las competencias se basan en partidos reales.
+
+\- Los partidos reales pueden reutilizarse entre múltiples competencias.
+
+\- Cada competencia puede decidir qué partidos puntúan.
+

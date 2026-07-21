@@ -216,9 +216,65 @@ No existe todavía modelo de pronóstico.
 
 
 
+\## Estado de arquitectura
+
+
+
+Dominio V1 definido conceptualmente.
+
+
+
+No implementado todavía en Django.
+
+
+
+Entidades planeadas:
+
+
+
+\- ParticipanteTemporada
+
+\- TipoCompetencia
+
+\- Competencia
+
+\- CompetenciaConfig
+
+\- ParticipacionCompetencia
+
+\- InstanciaCompetencia
+
+\- InstanciaPartido
+
+\- CalendarioReal
+
+\- PartidoReal
+
+\- Pronostico
+
+\- ResultadoPronostico
+
+\- ResumenParticipanteInstancia
+
+\- Enfrentamiento
+
+\- ResultadoCompetencia
+
+\- EquipoTemporal
+
+\- MiembroEquipoTemporal
+
+\- Sorteo
+
+
+
+\---
+
+
+
 \## Próximo paso aprobado
 
 
 
-Diseño completo del dominio.
+Transformar el Dominio V1 en modelos Django.
 

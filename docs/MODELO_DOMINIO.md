@@ -1,8 +1,8 @@
-\# MODELO DOMINIO
+\# MODELO DOMINIO V1
 
 
 
-\## Entidades confirmadas
+\## Personas
 
 
 
@@ -14,6 +14,10 @@ Categoria
 
 
 
+ParticipanteTemporada
+
+
+
 Temporada
 
 
@@ -22,11 +26,11 @@ Temporada
 
 
 
-\## Entidades aprobadas conceptualmente
+\## Competencias
 
 
 
-ParticipanteTemporada
+TipoCompetencia
 
 
 
@@ -34,15 +38,63 @@ Competencia
 
 
 
+CompetenciaConfig
+
+
+
 ParticipacionCompetencia
 
 
 
-FechaReal
+InstanciaCompetencia
+
+
+
+\---
+
+
+
+\## Fútbol Real
+
+
+
+CalendarioReal
 
 
 
 PartidoReal
+
+
+
+\---
+
+
+
+\## Relación Competencia ↔ Partidos
+
+
+
+InstanciaPartido
+
+
+
+Permite:
+
+
+
+\- habilitar/deshabilitar partidos
+
+\- marcar penales
+
+\- utilizar subconjuntos de partidos
+
+
+
+\---
+
+
+
+\## Pronósticos
 
 
 
@@ -54,19 +106,7 @@ ResultadoPronostico
 
 
 
-FechaProde
-
-
-
-Enfrentamiento
-
-
-
-TablaCompetencia
-
-
-
-Playoff
+ResumenParticipanteInstancia
 
 
 
@@ -74,7 +114,75 @@ Playoff
 
 
 
-\## Filosofía
+\## Núcleo
+
+
+
+Enfrentamiento
+
+
+
+La entidad principal del negocio.
+
+
+
+Todo desemboca finalmente en un enfrentamiento.
+
+
+
+\---
+
+
+
+\## Históricos
+
+
+
+ResultadoCompetencia
+
+
+
+\---
+
+
+
+\## Equipos temporales
+
+
+
+EquipoTemporal
+
+
+
+MiembroEquipoTemporal
+
+
+
+Utilizados principalmente por Supercopa.
+
+
+
+\---
+
+
+
+\## Sorteos
+
+
+
+Sorteo
+
+
+
+Persistencia de sorteos realizados por la organización.
+
+
+
+\---
+
+
+
+\## Principios
 
 
 
@@ -82,7 +190,7 @@ Separar:
 
 
 
-Futbol Real
+Fútbol Real
 
 
 
@@ -98,51 +206,19 @@ Prode
 
 
 
-\### Futbol Real
+No hardcodear:
 
 
 
-FechaReal
+\- categorías
 
+\- participantes
 
+\- formatos de competencia
 
-PartidoReal
+\- cantidad de partidos
 
-
-
-ResultadoReal
-
-
-
-\---
-
-
-
-\### Prode
-
-
-
-Pronostico
-
-
-
-AF
-
-
-
-AV
-
-
-
-Enfrentamiento
-
-
-
-Tabla
-
-
-
-Playoff
+\- cantidad de zonas
 
 
 
@@ -150,69 +226,7 @@ Playoff
 
 
 
-\## Relación principal
+Toda competencia debe poder configurarse desde la interfaz administrativa.
 
 
-
-Participante
-
-↓
-
-Pronostico
-
-↓
-
-AF
-
-↓
-
-Enfrentamiento
-
-↓
-
-Tabla
-
-
-
-\---
-
-
-
-\## IMPORTANTE
-
-
-
-No todos los participantes juegan todas las competencias.
-
-
-
-No todos los participantes permanecen activos durante toda una competencia.
-
-
-
-Por ese motivo debe existir:
-
-
-
-ParticipacionCompetencia.
-
-
-
-\---
-
-
-
-\## IMPORTANTE
-
-
-
-La categoría puede cambiar entre temporadas.
-
-
-
-Por ese motivo debe existir:
-
-
-
-ParticipanteTemporada.
 

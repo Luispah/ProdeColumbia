@@ -208,3 +208,99 @@ Divertidas:
 
 \- peor compañero
 
+
+
+\## Creación de Temporadas
+
+
+
+El sistema deberá poder generar automáticamente una nueva temporada tomando como base la anterior.
+
+
+
+Debe sugerir:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- participantes activos
+
+
+
+La propuesta podrá modificarse manualmente antes de confirmarse.
+
+
+
+\---
+
+
+
+\## Participantes
+
+
+
+Un participante nunca se elimina.
+
+
+
+Puede:
+
+
+
+\- retirarse
+
+\- regresar años después
+
+\- cambiar de categoría
+
+
+
+Todo ello mediante ParticipanteTemporada.
+
+
+
+\---
+
+
+
+\## Competiciones
+
+
+
+Deben poder crearse desde interfaz gráfica.
+
+
+
+Parámetros configurables:
+
+
+
+\- participantes
+
+\- frecuencia
+
+\- zonas
+
+\- playoffs
+
+\- penales
+
+\- cantidad de partidos
+
+\- máximo de locales
+
+
+
+\---
+
+
+
+\## Partidos anulados
+
+
+
+La organización podrá marcar partidos como no contabilizables para una instancia concreta.
+
