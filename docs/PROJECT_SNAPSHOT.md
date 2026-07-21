@@ -2,11 +2,11 @@
 
 
 
-Fecha del snapshot:
+Fecha:
 
 
 
-2026-07-18
+2026-07-20
 
 
 
@@ -14,11 +14,11 @@ Fecha del snapshot:
 
 
 
-\## Git
+\## Estado General
 
 
 
-Repositorio:
+Proyecto:
 
 
 
@@ -26,7 +26,11 @@ ProdeColumbia
 
 
 
-Primer hito publicado en GitHub.
+Repositorio GitHub operativo.
+
+
+
+Dominio V1 congelado.
 
 
 
@@ -38,29 +42,11 @@ Primer hito publicado en GitHub.
 
 
 
-Python:
-
-3.14.3
+Python 3.14
 
 
 
-Django:
-
-6.0.7
-
-
-
-Git:
-
-instalado
-
-
-
-\---
-
-
-
-\## Base de datos
+Django 6
 
 
 
@@ -68,23 +54,11 @@ SQLite
 
 
 
-Archivo:
+Git
 
 
 
-db.sqlite3
-
-
-
-\---
-
-
-
-\## Aplicación
-
-
-
-core
+GitHub
 
 
 
@@ -92,7 +66,7 @@ core
 
 
 
-\## Modelos existentes
+\## Implementado
 
 
 
@@ -108,15 +82,23 @@ Temporada
 
 
 
+ImportadorParticipantes
+
+
+
+Admin Django
+
+
+
 \---
 
 
 
-\## Participantes
+\## Datos existentes
 
 
 
-Cantidad:
+Participantes:
 
 
 
@@ -124,43 +106,23 @@ Cantidad:
 
 
 
-Importados desde:
-
-
-
-01\_Participantes\_Actuales.xlsx
-
-
-
-\---
-
-
-
-\## Categorías
+Categorías:
 
 
 
 A
 
-
-
 B
-
-
 
 C
 
 
 
-\---
+Temporada activa:
 
 
 
-\## Temporadas
-
-
-
-2026 (activa)
+2026
 
 
 
@@ -168,23 +130,15 @@ C
 
 
 
-\## Funcionalidades operativas
+\## Estado Arquitectónico
 
 
 
-Admin
+Dominio V1 congelado.
 
 
 
-Importador de participantes
-
-
-
-Gestión de categorías
-
-
-
-Gestión de temporadas
+ERD Físico Fase 1 aprobado.
 
 
 
@@ -192,49 +146,21 @@ Gestión de temporadas
 
 
 
-\## Riesgos conocidos
+\## Próxima fase
 
 
 
-La categoría del participante todavía está modelada como texto.
+Implementación Django Fase 1.
 
 
 
-No existe todavía modelo de competencia.
-
-
-
-No existe todavía modelo de enfrentamiento.
-
-
-
-No existe todavía modelo de pronóstico.
-
-
-
-\---
-
-
-
-\## Estado de arquitectura
-
-
-
-Dominio V1 definido conceptualmente.
-
-
-
-No implementado todavía en Django.
-
-
-
-Entidades planeadas:
+Modelos:
 
 
 
 \- ParticipanteTemporada
 
-\- TipoCompetencia
+\- PlantillaCompetencia
 
 \- Competencia
 
@@ -244,37 +170,59 @@ Entidades planeadas:
 
 \- InstanciaCompetencia
 
-\- InstanciaPartido
-
-\- CalendarioReal
-
-\- PartidoReal
-
-\- Pronostico
-
-\- ResultadoPronostico
-
-\- ResumenParticipanteInstancia
-
-\- Enfrentamiento
-
-\- ResultadoCompetencia
-
-\- EquipoTemporal
-
-\- MiembroEquipoTemporal
-
-\- Sorteo
-
 
 
 \---
 
 
 
-\## Próximo paso aprobado
+\## Fases futuras
 
 
 
-Transformar el Dominio V1 en modelos Django.
+Fase 2
+
+
+
+CalendarioReal
+
+PartidoReal
+
+InstanciaPartido
+
+
+
+Fase 3
+
+
+
+Pronostico
+
+ResultadoPronostico
+
+ResumenParticipanteInstancia
+
+
+
+Fase 4
+
+
+
+EquipoTemporal
+
+MiembroEquipoTemporal
+
+Enfrentamiento
+
+
+
+Fase 5
+
+
+
+RankingTemporada
+
+ReglaClasificacion
+
+ResultadoCompetencia
 

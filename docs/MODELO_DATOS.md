@@ -1,154 +1,95 @@
-\# ROADMAP
+# MODELO DATOS
 
+## Fase 1
 
+Participante
 
-\## DOMINIO V1
+Categoria
 
-
-
-Estado:
-
-
-
-CONGELADO
-
-
-
-\---
-
-
-
-\## FASE 1 DJANGO
-
-
+Temporada
 
 ParticipanteTemporada
 
-
-
 PlantillaCompetencia
-
-
 
 Competencia
 
-
-
 CompetenciaConfig
-
-
 
 ParticipacionCompetencia
 
-
-
 InstanciaCompetencia
 
+---
 
-
-\---
-
-
-
-\## FASE 2 DJANGO
-
-
+## Fase 2
 
 CalendarioReal
 
-
-
 PartidoReal
-
-
 
 InstanciaPartido
 
+---
 
-
-\---
-
-
-
-\## FASE 3 DJANGO
-
-
+## Fase 3
 
 Pronostico
 
-
-
 ResultadoPronostico
-
-
 
 ResumenParticipanteInstancia
 
+---
 
-
-\---
-
-
-
-\## FASE 4 DJANGO
-
-
+## Fase 4
 
 EquipoTemporal
 
-
-
 MiembroEquipoTemporal
-
-
 
 Enfrentamiento
 
+---
 
-
-\---
-
-
-
-\## FASE 5 DJANGO
-
-
+## Fase 5
 
 RankingTemporada
 
-
-
 ReglaClasificacion
-
-
 
 ResultadoCompetencia
 
+---
 
+## Diseño
 
-\---
+Fútbol Real
 
+↓
 
+PartidoReal
 
-\## FUTURO
+↓
 
+Pronostico
 
+↓
 
-Importación automática vía API.
+ResultadoPronostico
 
+↓
 
+ResumenParticipanteInstancia
 
-Dashboard.
+↓
 
+Enfrentamiento
 
+↓
 
-Hall of Fame.
+RankingTemporada
 
+↓
 
-
-Rivalidades.
-
-
-
-Estadísticas avanzadas.
-
+ResultadoCompetencia

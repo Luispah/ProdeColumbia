@@ -10,11 +10,75 @@ ProdeColumbia.
 
 
 
-Aplicación web para administrar el Prode interno que actualmente se gestiona mediante Excel.
+Aplicación web para administrar integralmente el Prode Columbia, actualmente gestionado mediante Excel.
 
 
 
-El objetivo es reemplazar gradualmente la operatoria manual por una plataforma web.
+No es un simple sistema de pronósticos deportivos.
+
+
+
+Modela:
+
+
+
+\- Liga Profesional Apertura
+
+\- Liga Profesional Clausura
+
+\- Copa Argentina
+
+\- Copa Libertadores
+
+\- Copa Sudamericana
+
+\- Copa Repechaje
+
+\- Supercopa
+
+\- Futuras competiciones
+
+
+
+\---
+
+
+
+\## Objetivo
+
+
+
+Reemplazar progresivamente la operatoria manual basada en Excel por una plataforma web centralizada.
+
+
+
+El objetivo NO es únicamente registrar pronósticos.
+
+
+
+También debe gestionar:
+
+
+
+\- participantes
+
+\- categorías
+
+\- temporadas
+
+\- ascensos
+
+\- descensos
+
+\- clasificaciones
+
+\- enfrentamientos
+
+\- históricos
+
+\- estadísticas
+
+\- rankings
 
 
 
@@ -26,23 +90,29 @@ El objetivo es reemplazar gradualmente la operatoria manual por una plataforma w
 
 
 
-Backend:
+Backend
+
+
 
 \- Python
 
-\- Django 6
+\- Django
 
 
 
-Base de datos:
-
-\- SQLite (desarrollo)
-
-\- PostgreSQL (previsto para producción)
+Base de datos
 
 
 
-Control de versiones:
+\- SQLite en desarrollo
+
+\- PostgreSQL en producción (previsto)
+
+
+
+Versionado
+
+
 
 \- Git
 
@@ -50,7 +120,9 @@ Control de versiones:
 
 
 
-Repositorio:
+Repositorio
+
+
 
 \- ProdeColumbia
 
@@ -68,21 +140,21 @@ Implementado:
 
 
 
-\- Django funcionando
+\- Django operativo
 
-\- Admin funcionando
+\- Admin operativo
 
-\- Participante
+\- Participantes
 
-\- Categoria
+\- Categorías
 
-\- Temporada
+\- Temporadas
 
-\- Importador de participantes
+\- Importador Excel
 
 
 
-Datos cargados:
+Datos existentes:
 
 
 
@@ -98,79 +170,71 @@ Datos cargados:
 
 
 
-\## Conceptos del negocio
+\## Principios arquitectónicos
 
 
 
-La entidad principal NO es Partido.
+Separar completamente:
 
 
 
-La entidad principal es Enfrentamiento.
+Fútbol Real
 
 
 
-Flujo:
+de
 
 
 
-Partido Real
+Prode
 
-↓
 
-Pronóstico
 
-↓
+\---
 
-AF / AV
 
-↓
+
+Fútbol Real:
+
+
+
+CalendarioReal
+
+
+
+PartidoReal
+
+
+
+\---
+
+
+
+Prode:
+
+
+
+Pronostico
+
+
+
+AF
+
+
+
+AV
+
+
 
 Enfrentamiento
 
-↓
+
 
 Tabla
 
-↓
-
-Playoffs
 
 
-
-\---
-
-
-
-\## Principios de diseño
-
-
-
-No hardcodear:
-
-
-
-\- categorías
-
-\- cantidad de categorías
-
-\- cantidad de participantes
-
-\- cantidad de temporadas
-
-
-
-Diseñar para soportar:
-
-
-
-\- Liga
-
-\- Copa Argentina
-
-\- Supercopa
-
-\- futuras competencias
+Playoff
 
 
 
@@ -178,23 +242,27 @@ Diseñar para soportar:
 
 
 
-\## Situación actual
+\## Entidad central
 
 
 
-Categoria ya existe como tabla.
+La entidad principal del negocio es:
 
 
 
-Participante todavía almacena categoria como texto.
+ENFRENTAMIENTO
 
 
 
-La migración a ForeignKey fue intentada y falló.
+No Partido.
 
 
 
-Debe rediseñarse correctamente.
+No Pronóstico.
+
+
+
+Todo desemboca finalmente en un enfrentamiento.
 
 
 
@@ -202,15 +270,11 @@ Debe rediseñarse correctamente.
 
 
 
-\## Próximo paso
+\## Dominio V1 Congelado
 
 
 
-Diseñar el modelo de dominio completo antes de agregar más modelos.
-
-
-
-\## Modelo Dominio V1 (congelado)
+\### Núcleo
 
 
 
@@ -230,7 +294,11 @@ ParticipanteTemporada
 
 
 
-TipoCompetencia
+\### Competiciones
+
+
+
+PlantillaCompetencia
 
 
 
@@ -250,7 +318,7 @@ InstanciaCompetencia
 
 
 
-InstanciaPartido
+\### Fútbol Real
 
 
 
@@ -259,6 +327,14 @@ CalendarioReal
 
 
 PartidoReal
+
+
+
+InstanciaPartido
+
+
+
+\### Pronósticos
 
 
 
@@ -274,11 +350,31 @@ ResumenParticipanteInstancia
 
 
 
+\### Núcleo del Prode
+
+
+
 Enfrentamiento
 
 
 
+\### Históricos
+
+
+
+RankingTemporada
+
+
+
+ReglaClasificacion
+
+
+
 ResultadoCompetencia
+
+
+
+\### Equipos Temporales
 
 
 
@@ -290,7 +386,11 @@ MiembroEquipoTemporal
 
 
 
-Sorteo
+\### Futuro
+
+
+
+Sorteo (V2)
 
 
 
@@ -298,21 +398,27 @@ Sorteo
 
 
 
-\## Decisiones confirmadas
+\## Decisiones congeladas
 
 
 
-\- La categoría pertenece a ParticipanteTemporada.
+\- La categoría vive en ParticipanteTemporada.
 
-\- Se guardan históricos.
+\- Los participantes nunca se eliminan.
 
-\- Se guardan AF, AV y DA.
+\- AF, AV y DA se persisten.
 
-\- La Supercopa utilizará equipos temporales.
+\- Los históricos se persisten.
 
-\- Las competencias se basan en partidos reales.
+\- Las competencias se crean a partir de PlantillaCompetencia.
 
-\- Los partidos reales pueden reutilizarse entre múltiples competencias.
+\- Cada competencia posee configuración propia.
 
-\- Cada competencia puede decidir qué partidos puntúan.
+\- InstanciaCompetencia reemplaza conceptualmente a "Fecha".
+
+\- Los partidos reales son independientes de las competencias.
+
+\- Una competencia puede utilizar todos o algunos de los partidos disponibles.
+
+\- La Supercopa utiliza equipos temporales.
 

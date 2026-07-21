@@ -6,27 +6,19 @@
 
 
 
-Actualmente:
+Los participantes nunca se eliminan.
 
 
 
-90 participantes
+Pueden:
 
 
 
-Distribución:
+\- retirarse
 
+\- volver años después
 
-
-A = 30
-
-
-
-B = 30
-
-
-
-C = 30
+\- cambiar de categoría
 
 
 
@@ -50,163 +42,19 @@ No hardcodeadas.
 
 
 
-\## Liga
+\## Temporadas
 
 
 
-Tabla basada en:
+Las temporadas son independientes.
 
 
 
-PJ
-
-
-
-PG
-
-
-
-PE
-
-
-
-PP
-
-
-
-PTS
-
-
-
-AF
-
-
-
-AV
-
-
-
-DA
+Cada participante posee una participación por temporada.
 
 
 
 \---
-
-
-
-\## Copa Argentina
-
-
-
-Eliminación directa.
-
-
-
-Sin tabla general.
-
-
-
-\---
-
-
-
-\## Supercopa
-
-
-
-Sistema diferente.
-
-
-
-Doble eliminación.
-
-
-
-Estados posibles:
-
-
-
-\- Ganadores
-
-\- Perdedores
-
-\- Eliminado
-
-
-
-\---
-
-
-
-\## Histórico
-
-
-
-Debe soportar:
-
-
-
-15 años o más.
-
-
-
-Carga inicial manual.
-
-
-
-\---
-
-
-
-\## Perfil
-
-
-
-Cada participante deberá poder:
-
-
-
-\- actualizar mail
-
-\- elegir club hincha
-
-\- elegir club simpatizante
-
-
-
-\---
-
-
-
-\## Estadísticas previstas
-
-
-
-Serias:
-
-
-
-\- títulos
-
-\- podios
-
-\- AF
-
-\- AV
-
-
-
-Divertidas:
-
-
-
-\- bestia negra
-
-\- hijo deportivo
-
-\- compañero favorito
-
-\- peor compañero
 
 
 
@@ -214,11 +62,11 @@ Divertidas:
 
 
 
-El sistema deberá poder generar automáticamente una nueva temporada tomando como base la anterior.
+El sistema deberá generar propuestas automáticas.
 
 
 
-Debe sugerir:
+Incluyendo:
 
 
 
@@ -230,35 +78,7 @@ Debe sugerir:
 
 
 
-La propuesta podrá modificarse manualmente antes de confirmarse.
-
-
-
-\---
-
-
-
-\## Participantes
-
-
-
-Un participante nunca se elimina.
-
-
-
-Puede:
-
-
-
-\- retirarse
-
-\- regresar años después
-
-\- cambiar de categoría
-
-
-
-Todo ello mediante ParticipanteTemporada.
+La propuesta podrá modificarse manualmente.
 
 
 
@@ -270,27 +90,11 @@ Todo ello mediante ParticipanteTemporada.
 
 
 
-Deben poder crearse desde interfaz gráfica.
+Se crean desde PlantillaCompetencia.
 
 
 
-Parámetros configurables:
-
-
-
-\- participantes
-
-\- frecuencia
-
-\- zonas
-
-\- playoffs
-
-\- penales
-
-\- cantidad de partidos
-
-\- máximo de locales
+Toda configuración debe poder modificarse desde interfaz gráfica.
 
 
 
@@ -298,9 +102,87 @@ Parámetros configurables:
 
 
 
-\## Partidos anulados
+\## AF / AV / DA
 
 
 
-La organización podrá marcar partidos como no contabilizables para una instancia concreta.
+Se persistirán.
+
+
+
+No se recalcularán permanentemente.
+
+
+
+\---
+
+
+
+\## Históricos
+
+
+
+Los resultados finales de todas las competiciones se almacenarán.
+
+
+
+\---
+
+
+
+\## Partidos reales
+
+
+
+Todas las competiciones utilizan partidos reales.
+
+
+
+Una competición puede:
+
+
+
+\- utilizar todos los partidos
+
+\- utilizar algunos
+
+\- excluir partidos suspendidos
+
+\- definir partidos de penales
+
+
+
+\---
+
+
+
+\## Supercopa
+
+
+
+Utiliza equipos temporales.
+
+
+
+No utiliza participantes individuales directamente.
+
+
+
+\---
+
+
+
+\## Ranking Temporada
+
+
+
+Es la fuente oficial para:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- clasificación a copas
 

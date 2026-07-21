@@ -10,15 +10,11 @@ Participante
 
 
 
-Categoria
+Representa una persona.
 
 
 
-ParticipanteTemporada
-
-
-
-Temporada
+Nunca se elimina.
 
 
 
@@ -26,11 +22,109 @@ Temporada
 
 
 
-\## Competencias
+Categoria
 
 
 
-TipoCompetencia
+Representa una división.
+
+
+
+Ejemplos:
+
+
+
+A
+
+B
+
+C
+
+
+
+\---
+
+
+
+Temporada
+
+
+
+Representa un ciclo anual.
+
+
+
+Ejemplos:
+
+
+
+2026
+
+2027
+
+2028
+
+
+
+\---
+
+
+
+ParticipanteTemporada
+
+
+
+Representa la participación de una persona dentro de una temporada determinada.
+
+
+
+Resuelve:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- participantes nuevos
+
+\- participantes que regresan
+
+\- histórico
+
+
+
+\---
+
+
+
+\## Competiciones
+
+
+
+PlantillaCompetencia
+
+
+
+Modelo base para generar nuevas competiciones.
+
+
+
+Ejemplos:
+
+
+
+\- Liga Profesional
+
+\- Copa Repechaje
+
+\- Copa Argentina
+
+\- Supercopa
+
+
+
+\---
 
 
 
@@ -38,7 +132,33 @@ Competencia
 
 
 
+Instancia concreta de una competición.
+
+
+
+Ejemplos:
+
+
+
+\- Clausura 2026
+
+\- Copa Repechaje 2026
+
+
+
+\---
+
+
+
 CompetenciaConfig
+
+
+
+Configura reglas de negocio sin modificar código.
+
+
+
+\---
 
 
 
@@ -46,7 +166,43 @@ ParticipacionCompetencia
 
 
 
+Representa la participación de un jugador en una competición.
+
+
+
+\---
+
+
+
 InstanciaCompetencia
+
+
+
+Representa cualquier etapa.
+
+
+
+Ejemplos:
+
+
+
+Fecha 1
+
+
+
+Fecha 2
+
+
+
+32avos
+
+
+
+Octavos
+
+
+
+Final
 
 
 
@@ -62,7 +218,7 @@ CalendarioReal
 
 
 
-PartidoReal
+Agrupa fechas reales del fútbol argentino.
 
 
 
@@ -70,7 +226,23 @@ PartidoReal
 
 
 
-\## Relación Competencia ↔ Partidos
+PartidoReal
+
+
+
+Representa un partido real.
+
+
+
+Ejemplo:
+
+
+
+River vs Boca
+
+
+
+\---
 
 
 
@@ -78,11 +250,15 @@ InstanciaPartido
 
 
 
+Relaciona una competencia con partidos específicos.
+
+
+
 Permite:
 
 
 
-\- habilitar/deshabilitar partidos
+\- excluir partidos
 
 \- marcar penales
 
@@ -114,7 +290,7 @@ ResumenParticipanteInstancia
 
 
 
-\## Núcleo
+\## Entidad Central
 
 
 
@@ -122,11 +298,11 @@ Enfrentamiento
 
 
 
-La entidad principal del negocio.
+Representa un duelo entre competidores.
 
 
 
-Todo desemboca finalmente en un enfrentamiento.
+Todo el modelo converge finalmente en esta entidad.
 
 
 
@@ -138,7 +314,11 @@ Todo desemboca finalmente en un enfrentamiento.
 
 
 
-ResultadoCompetencia
+RankingTemporada
+
+
+
+Tabla anual y acumulados.
 
 
 
@@ -146,7 +326,31 @@ ResultadoCompetencia
 
 
 
-\## Equipos temporales
+ReglaClasificacion
+
+
+
+Determina accesos a copas y otras competiciones.
+
+
+
+\---
+
+
+
+ResultadoCompetencia
+
+
+
+Almacena resultados definitivos.
+
+
+
+\---
+
+
+
+\## Equipos Temporales
 
 
 
@@ -159,74 +363,4 @@ MiembroEquipoTemporal
 
 
 Utilizados principalmente por Supercopa.
-
-
-
-\---
-
-
-
-\## Sorteos
-
-
-
-Sorteo
-
-
-
-Persistencia de sorteos realizados por la organización.
-
-
-
-\---
-
-
-
-\## Principios
-
-
-
-Separar:
-
-
-
-Fútbol Real
-
-
-
-de
-
-
-
-Prode
-
-
-
-\---
-
-
-
-No hardcodear:
-
-
-
-\- categorías
-
-\- participantes
-
-\- formatos de competencia
-
-\- cantidad de partidos
-
-\- cantidad de zonas
-
-
-
-\---
-
-
-
-Toda competencia debe poder configurarse desde la interfaz administrativa.
-
-
 

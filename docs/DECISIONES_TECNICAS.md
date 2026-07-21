@@ -6,11 +6,7 @@
 
 
 
-Se adopta Django como framework principal.
-
-
-
-\---
+Se adopta Django.
 
 
 
@@ -18,11 +14,7 @@ Se adopta Django como framework principal.
 
 
 
-Se adopta GitHub como repositorio oficial.
-
-
-
-\---
+Se adopta GitHub.
 
 
 
@@ -34,10 +26,6 @@ Se adopta SQLite para desarrollo.
 
 
 
-\---
-
-
-
 \## 2026-07-18
 
 
@@ -46,47 +34,11 @@ No se hardcodearán categorías.
 
 
 
-\---
+\## 2026-07-20
 
 
 
-\## 2026-07-18
-
-
-
-No se hardcodeará cantidad de participantes.
-
-
-
-\---
-
-
-
-\## 2026-07-18
-
-
-
-La entidad principal del negocio pasa a ser:
-
-
-
-Enfrentamiento.
-
-
-
-No Partido.
-
-
-
-\---
-
-
-
-\## 2026-07-18
-
-
-
-Se decide diseñar primero el dominio completo antes de continuar agregando modelos.
+La categoría vive en ParticipanteTemporada.
 
 
 
@@ -94,11 +46,7 @@ Se decide diseñar primero el dominio completo antes de continuar agregando mode
 
 
 
-La categoría pasa conceptualmente a ParticipanteTemporada.
-
-
-
-\---
+Se adopta PlantillaCompetencia.
 
 
 
@@ -106,11 +54,7 @@ La categoría pasa conceptualmente a ParticipanteTemporada.
 
 
 
-Se adopta CompetenciaConfig para parametrizar torneos.
-
-
-
-\---
+Se adopta CompetenciaConfig.
 
 
 
@@ -118,29 +62,7 @@ Se adopta CompetenciaConfig para parametrizar torneos.
 
 
 
-Se adopta InstanciaCompetencia como reemplazo conceptual de "Fecha".
-
-
-
-Permite representar:
-
-
-
-\- Fechas
-
-\- Rondas
-
-\- Octavos
-
-\- Finales
-
-
-
-con una misma entidad.
-
-
-
-\---
+InstanciaCompetencia reemplaza el concepto tradicional de Fecha.
 
 
 
@@ -148,23 +70,7 @@ con una misma entidad.
 
 
 
-Se adopta InstanciaPartido para vincular partidos reales con una competencia específica.
-
-
-
-\---
-
-
-
-\## 2026-07-20
-
-
-
-Se adopta EquipoTemporal para soportar Supercopa.
-
-
-
-\---
+Los partidos reales son independientes de las competiciones.
 
 
 
@@ -173,4 +79,36 @@ Se adopta EquipoTemporal para soportar Supercopa.
 
 
 AF, AV y DA serán persistidos.
+
+
+
+\## 2026-07-20
+
+
+
+Enfrentamiento es la entidad principal del negocio.
+
+
+
+\## 2026-07-20
+
+
+
+Se incorpora RankingTemporada.
+
+
+
+\## 2026-07-20
+
+
+
+Se incorpora ReglaClasificacion.
+
+
+
+\## 2026-07-20
+
+
+
+La Supercopa utilizará equipos temporales.
 
