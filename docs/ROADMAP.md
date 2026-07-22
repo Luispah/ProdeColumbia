@@ -10,7 +10,31 @@ Estado:
 
 
 
-CONGELADO
+✅ CONGELADO
+
+
+
+✅ VALIDADO CONTRA LOS REGLAMENTOS VIGENTES
+
+
+
+Incluye:
+
+
+
+\- Participantes
+
+\- Temporadas
+
+\- Competiciones
+
+\- Fútbol Real
+
+\- Pronósticos
+
+\- Resultados
+
+\- Resúmenes
 
 
 
@@ -22,27 +46,29 @@ CONGELADO
 
 
 
-ParticipanteTemporada
+Estado:
 
 
 
-PlantillaCompetencia
+✅ COMPLETADA
 
 
 
-Competencia
+Implementado:
 
 
 
-CompetenciaConfig
+\- ParticipanteTemporada
 
+\- PlantillaCompetencia
 
+\- Competencia
 
-ParticipacionCompetencia
+\- CompetenciaConfig
 
+\- ParticipacionCompetencia
 
-
-InstanciaCompetencia
+\- InstanciaCompetencia
 
 
 
@@ -54,15 +80,37 @@ InstanciaCompetencia
 
 
 
-CalendarioReal
+Estado:
 
 
 
-PartidoReal
+✅ COMPLETADA
 
 
 
-InstanciaPartido
+Implementado:
+
+
+
+\- EquipoReal
+
+\- CalendarioReal
+
+\- PartidoReal
+
+\- InstanciaPartido
+
+
+
+Validado mediante:
+
+
+
+\- Equipos reales cargados
+
+\- Calendario Fecha 1
+
+\- Partidos reales cargados
 
 
 
@@ -74,15 +122,39 @@ InstanciaPartido
 
 
 
-Pronostico
+Estado:
 
 
 
-ResultadoPronostico
+✅ COMPLETADA
 
 
 
-ResumenParticipanteInstancia
+Implementado:
+
+
+
+\- Pronostico
+
+\- ResultadoPronostico
+
+\- ResumenParticipanteInstancia
+
+
+
+Validado mediante:
+
+
+
+\- Pronósticos reales
+
+\- Resultados reales
+
+\- AF
+
+\- AV
+
+\- Puntos
 
 
 
@@ -94,15 +166,37 @@ ResumenParticipanteInstancia
 
 
 
-EquipoTemporal
+Estado:
 
 
 
-MiembroEquipoTemporal
+🔄 EN CURSO
 
 
 
-Enfrentamiento
+Próximo objetivo:
+
+
+
+\- Enfrentamiento
+
+
+
+Posteriormente:
+
+
+
+\- EquipoTemporal
+
+\- MiembroEquipoTemporal
+
+
+
+Objetivo:
+
+
+
+Representar duelos directos entre participantes y soportar competiciones por equipos.
 
 
 
@@ -114,15 +208,39 @@ Enfrentamiento
 
 
 
-RankingTemporada
+Estado:
 
 
 
-ReglaClasificacion
+⏳ PENDIENTE
 
 
 
-ResultadoCompetencia
+Implementar:
+
+
+
+\- RankingTemporada
+
+\- ReglaClasificacion
+
+\- ResultadoCompetencia
+
+
+
+Objetivo:
+
+
+
+\- tablas anuales
+
+\- ascensos
+
+\- descensos
+
+\- clasificación a copas
+
+\- históricos
 
 
 
@@ -130,25 +248,329 @@ ResultadoCompetencia
 
 
 
-\## FUTURO
+\## FUNCIONALIDAD PENDIENTE (ALTA PRIORIDAD)
 
 
 
-Importación automática vía API.
+\### Bloqueo de Boletas
 
 
 
-Dashboard.
+Implementar cierre automático.
 
 
 
-Hall of Fame.
+Objetivo inicial:
 
 
 
-Rivalidades.
+\- 1 hora antes del primer partido válido.
 
 
 
-Estadísticas avanzadas.
+\---
+
+
+
+\### Visibilidad de Boletas
+
+
+
+Antes del cierre:
+
+
+
+\- sólo el propietario visualiza la boleta
+
+
+
+Después del cierre:
+
+
+
+\- todos los participantes pueden visualizar todas las boletas
+
+
+
+\---
+
+
+
+\### Partidos Decisivos
+
+
+
+Identificar partidos donde dos participantes tienen pronósticos diferentes.
+
+
+
+Mostrar visualmente dichos partidos.
+
+
+
+\---
+
+
+
+\### Carga Administrativa
+
+
+
+Permitir:
+
+
+
+\- creación de boletas por terceros
+
+\- modificación de boletas por terceros
+
+
+
+\---
+
+
+
+\### Auditoría
+
+
+
+Registrar:
+
+
+
+\- propietario de la boleta
+
+\- usuario que efectuó la carga
+
+\- fecha de creación
+
+\- fecha de modificación
+
+
+
+\---
+
+
+
+\### Zona Horaria Argentina
+
+
+
+Configurar:
+
+
+
+America/Argentina/Buenos\_Aires
+
+
+
+\---
+
+
+
+\### Escudos
+
+
+
+Soporte para:
+
+
+
+\- escudos oficiales
+
+\- almacenamiento local
+
+
+
+\---
+
+
+
+\## INTEGRACIONES FUTURAS
+
+
+
+\### Importación Automática
+
+
+
+\- Fixture
+
+\- Resultados
+
+\- Horarios
+
+
+
+Origen previsto:
+
+
+
+\- APIs de fútbol
+
+
+
+\---
+
+
+
+\### Actualización Automática
+
+
+
+\- resultados de partidos
+
+\- estados de encuentros
+
+\- horarios
+
+
+
+\---
+
+
+
+\## FRONTEND
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+\### Administrador
+
+
+
+\- gestión de temporadas
+
+\- competiciones
+
+\- fixture
+
+\- resultados
+
+\- participantes
+
+
+
+\### Participante
+
+
+
+\- carga de boletas
+
+\- visualización de resultados
+
+\- historial
+
+\- estadísticas
+
+
+
+\---
+
+
+
+\## ESTADÍSTICAS E HISTÓRICOS
+
+
+
+\### Hall of Fame
+
+
+
+\- campeones
+
+\- subcampeones
+
+\- récords
+
+
+
+\### Rivalidades
+
+
+
+\- historial entre participantes
+
+
+
+\### Estadísticas Avanzadas
+
+
+
+\- AF históricos
+
+\- AV históricos
+
+\- efectividad
+
+\- rendimiento por competencia
+
+\- rendimiento por temporada
+
+
+
+\---
+
+
+
+\## ESTADO ACTUAL DEL PROYECTO
+
+
+
+El sistema ya permite:
+
+
+
+Participante
+
+
+
+↓
+
+
+
+Pronostico
+
+
+
+↓
+
+
+
+PartidoReal
+
+
+
+↓
+
+
+
+ResultadoPronostico
+
+
+
+↓
+
+
+
+ResumenParticipanteInstancia
+
+
+
+con datos persistidos y validados en base de datos.
+
+
+
+Próximo desarrollo principal:
+
+
+
+Enfrentamiento.
 

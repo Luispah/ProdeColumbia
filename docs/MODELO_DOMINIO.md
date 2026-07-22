@@ -2,19 +2,49 @@
 
 
 
-\## Personas
+\---
 
 
 
-Participante
+\# Visión General
 
 
 
-Representa una persona.
+El dominio modela un sistema de Prode capaz de:
 
 
 
-Nunca se elimina.
+\- administrar temporadas
+
+\- administrar participantes
+
+\- administrar competiciones
+
+\- administrar pronósticos
+
+\- calcular resultados
+
+\- generar tablas y clasificaciones
+
+\- soportar múltiples formatos de competición
+
+
+
+El modelo separa explícitamente:
+
+
+
+\- personas
+
+\- competiciones
+
+\- fútbol real
+
+\- pronósticos
+
+\- resultados
+
+\- históricos
 
 
 
@@ -22,7 +52,45 @@ Nunca se elimina.
 
 
 
-Categoria
+\# Personas
+
+
+
+\## Participante
+
+
+
+Representa una persona.
+
+
+
+Características:
+
+
+
+\- nunca se elimina
+
+\- mantiene identidad histórica
+
+\- puede participar en múltiples temporadas
+
+
+
+Ejemplos:
+
+
+
+\- Pablo Camporini
+
+\- Alejandro Caramia
+
+
+
+\---
+
+
+
+\## Categoria
 
 
 
@@ -34,11 +102,23 @@ Ejemplos:
 
 
 
-A
+\- A
 
-B
+\- B
 
-C
+\- C
+
+
+
+Responsabilidades:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- organización de participantes
 
 
 
@@ -46,7 +126,7 @@ C
 
 
 
-Temporada
+\## Temporada
 
 
 
@@ -58,11 +138,11 @@ Ejemplos:
 
 
 
-2026
+\- 2026
 
-2027
+\- 2027
 
-2028
+\- 2028
 
 
 
@@ -70,11 +150,11 @@ Ejemplos:
 
 
 
-ParticipanteTemporada
+\## ParticipanteTemporada
 
 
 
-Representa la participación de una persona dentro de una temporada determinada.
+Representa la participación de un participante dentro de una temporada específica.
 
 
 
@@ -86,151 +166,11 @@ Resuelve:
 
 \- descensos
 
-\- participantes nuevos
+\- nuevos participantes
 
-\- participantes que regresan
+\- participantes reincorporados
 
-\- histórico
-
-
-
-\---
-
-
-
-\## Competiciones
-
-
-
-PlantillaCompetencia
-
-
-
-Modelo base para generar nuevas competiciones.
-
-
-
-Ejemplos:
-
-
-
-\- Liga Profesional
-
-\- Copa Repechaje
-
-\- Copa Argentina
-
-\- Supercopa
-
-
-
-\---
-
-
-
-Competencia
-
-
-
-Instancia concreta de una competición.
-
-
-
-Ejemplos:
-
-
-
-\- Clausura 2026
-
-\- Copa Repechaje 2026
-
-
-
-\---
-
-
-
-CompetenciaConfig
-
-
-
-Configura reglas de negocio sin modificar código.
-
-
-
-\---
-
-
-
-ParticipacionCompetencia
-
-
-
-Representa la participación de un jugador en una competición.
-
-
-
-\---
-
-
-
-InstanciaCompetencia
-
-
-
-Representa cualquier etapa.
-
-
-
-Ejemplos:
-
-
-
-Fecha 1
-
-
-
-Fecha 2
-
-
-
-32avos
-
-
-
-Octavos
-
-
-
-Final
-
-
-
-\---
-
-
-
-\## Fútbol Real
-
-
-
-CalendarioReal
-
-
-
-Agrupa fechas reales del fútbol argentino.
-
-
-
-\---
-
-
-
-PartidoReal
-
-
-
-Representa un partido real.
+\- histórico por temporada
 
 
 
@@ -238,129 +178,15 @@ Ejemplo:
 
 
 
-River vs Boca
+```text
 
+Pablo Camporini
 
+↓
 
-\---
+Temporada 2026
 
+↓
 
-
-InstanciaPartido
-
-
-
-Relaciona una competencia con partidos específicos.
-
-
-
-Permite:
-
-
-
-\- excluir partidos
-
-\- marcar penales
-
-\- utilizar subconjuntos de partidos
-
-
-
-\---
-
-
-
-\## Pronósticos
-
-
-
-Pronostico
-
-
-
-ResultadoPronostico
-
-
-
-ResumenParticipanteInstancia
-
-
-
-\---
-
-
-
-\## Entidad Central
-
-
-
-Enfrentamiento
-
-
-
-Representa un duelo entre competidores.
-
-
-
-Todo el modelo converge finalmente en esta entidad.
-
-
-
-\---
-
-
-
-\## Históricos
-
-
-
-RankingTemporada
-
-
-
-Tabla anual y acumulados.
-
-
-
-\---
-
-
-
-ReglaClasificacion
-
-
-
-Determina accesos a copas y otras competiciones.
-
-
-
-\---
-
-
-
-ResultadoCompetencia
-
-
-
-Almacena resultados definitivos.
-
-
-
-\---
-
-
-
-\## Equipos Temporales
-
-
-
-EquipoTemporal
-
-
-
-MiembroEquipoTemporal
-
-
-
-Utilizados principalmente por Supercopa.
+Categoría A
 
