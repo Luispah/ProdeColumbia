@@ -26,7 +26,7 @@ El objetivo es modelar completamente la estructura competitiva del Prode.
 
 
 
-Incluye:
+Incluye actualmente:
 
 
 
@@ -42,7 +42,9 @@ Incluye:
 
 \- Supercopa
 
-\- futuras competiciones
+
+
+y deberá ser capaz de soportar futuras competiciones sin necesidad de modificar código.
 
 
 
@@ -87,6 +89,166 @@ El sistema debe administrar:
 \- históricos
 
 \- estadísticas
+
+
+
+\---
+
+
+
+\## Visión Estratégica
+
+
+
+El objetivo del proyecto NO es implementar únicamente las competiciones actuales.
+
+
+
+El objetivo es construir un motor capaz de generar futuras ligas y copas mediante configuración.
+
+
+
+Ejemplos:
+
+
+
+\- nuevas ligas
+
+\- nuevas copas
+
+\- nuevas supercopas
+
+\- torneos especiales
+
+\- formatos todavía no definidos
+
+
+
+La aplicación debe evolucionar hacia:
+
+
+
+```text
+
+Plantilla
+
+↓
+
+Configuración
+
+↓
+
+Generación automática
+
+↓
+
+Competencia operativa
+
+```
+
+
+
+con supervisión administrativa.
+
+
+
+\---
+
+
+
+\## Entidad Principal de Negocio
+
+
+
+La entidad principal del ecosistema es:
+
+
+
+```text
+
+Temporada
+
+```
+
+
+
+Una temporada representa un año competitivo completo.
+
+
+
+Ejemplos:
+
+
+
+```text
+
+2026
+
+2027
+
+2028
+
+```
+
+
+
+Todas las competiciones pertenecen a una temporada.
+
+
+
+\---
+
+
+
+\## Relación Temporada - Competiciones
+
+
+
+Ejemplo:
+
+
+
+```text
+
+Temporada 2026
+
+│
+
+├── Liga Apertura
+
+├── Liga Clausura
+
+├── Libertadores
+
+├── Sudamericana
+
+├── Repechaje
+
+├── Copa Argentina
+
+└── Supercopa
+
+```
+
+
+
+No existe obligación de mantener siempre la misma cantidad ni el mismo tipo de competiciones.
+
+
+
+Cada temporada puede contener:
+
+
+
+\- una o varias ligas
+
+\- una o varias copas
+
+\- competiciones especiales
+
+
+
+según las decisiones de la organización.
 
 
 
@@ -254,87 +416,51 @@ Actualmente existe:
 
 
 
+```text
+
 Participante
 
-
-
 ↓
-
-
 
 ParticipanteTemporada
 
-
-
 ↓
-
-
 
 Pronostico
 
-
-
 ↓
-
-
 
 ResultadoPronostico
 
-
-
 ↓
-
-
 
 ResumenParticipanteInstancia
 
-
-
 ↓
-
-
 
 Enfrentamiento
 
-
-
 ↓
-
-
 
 TablaInstancia
 
-
-
 ↓
-
-
 
 TablaCompetencia
 
-
-
 ↓
-
-
 
 TablaTemporada
 
-
-
 ↓
-
-
 
 ResultadoTemporada
 
-
-
 ↓
 
-
-
 MovimientoCategoria
+
+```
 
 
 
@@ -346,63 +472,39 @@ MovimientoCategoria
 
 
 
+```text
+
 Competencia
 
-
-
 ↓
-
-
 
 ParticipacionCompetencia
 
-
-
 ↓
-
-
 
 GrupoCompetencia
 
-
-
 ↓
-
-
 
 ParticipacionGrupo
 
-
-
 ↓
-
-
 
 TablaGrupo
 
-
-
 ↓
-
-
 
 ClasificacionGrupo
 
-
-
 ↓
-
-
 
 LlaveCompetencia
 
-
-
 ↓
 
-
-
 Campeón
+
+```
 
 
 
@@ -431,6 +533,122 @@ Los enfrentamientos representan la competencia entre participantes.
 
 
 Toda la lógica deportiva termina convergiendo en un enfrentamiento.
+
+
+
+\---
+
+
+
+\## Familias de Competiciones
+
+
+
+Actualmente se identifican cuatro grandes familias.
+
+
+
+\### Liga
+
+
+
+```text
+
+Zonas
+
+↓
+
+Tabla
+
+↓
+
+Clasificación
+
+↓
+
+Playoffs
+
+```
+
+
+
+\### Copa con Grupos
+
+
+
+```text
+
+Grupos
+
+↓
+
+Clasificación
+
+↓
+
+Playoffs
+
+```
+
+
+
+Ejemplos:
+
+
+
+\- Libertadores
+
+\- Sudamericana
+
+
+
+\### Copa Eliminatoria
+
+
+
+```text
+
+Sorteo
+
+↓
+
+Eliminación Directa
+
+```
+
+
+
+Ejemplos:
+
+
+
+\- Copa Argentina
+
+\- Repechaje
+
+
+
+\### Supercopa
+
+
+
+```text
+
+Equipos temporales
+
+↓
+
+Doble eliminación
+
+↓
+
+Zona Ganadores
+
+↓
+
+Zona Perdedores
+
+```
 
 
 
@@ -538,11 +756,221 @@ La entidad estratégica del sistema es:
 
 
 
+```text
+
 CompetenciaConfig
 
+```
 
 
-Debe convertirse progresivamente en la fuente principal de configuración de las competencias.
+
+Debe convertirse progresivamente en la fuente principal de configuración de las competiciones.
+
+
+
+\---
+
+
+
+\## Filosofía del Proyecto
+
+
+
+Principio rector:
+
+
+
+```text
+
+Configurar antes que programar.
+
+```
+
+
+
+Antes de:
+
+
+
+\- crear modelos nuevos
+
+\- agregar campos
+
+\- crear lógica específica
+
+
+
+debe verificarse si el problema puede resolverse mediante configuración.
+
+
+
+\---
+
+
+
+\## Automatización con Supervisión Humana
+
+
+
+La aplicación debe proponer.
+
+
+
+El administrador debe decidir.
+
+
+
+Ejemplos:
+
+
+
+\- participantes sugeridos
+
+\- ascensos sugeridos
+
+\- descensos sugeridos
+
+\- clasificaciones sugeridas
+
+\- configuraciones sugeridas
+
+
+
+La decisión final siempre pertenece al administrador.
+
+
+
+\---
+
+
+
+\## Generación de Nueva Temporada
+
+
+
+Visión futura:
+
+
+
+```text
+
+Crear nueva temporada
+
+↓
+
+Buscar última temporada válida
+
+↓
+
+Calcular movimientos
+
+↓
+
+Sugerir participantes
+
+↓
+
+Permitir correcciones
+
+↓
+
+Generar temporada
+
+```
+
+
+
+sin reconstruir manualmente toda la estructura.
+
+
+
+\---
+
+
+
+\## Categorías
+
+
+
+Las categorías son dinámicas.
+
+
+
+Ejemplos válidos:
+
+
+
+```text
+
+A
+
+B
+
+C
+
+```
+
+
+
+```text
+
+A
+
+B
+
+C
+
+D
+
+```
+
+
+
+```text
+
+A
+
+B
+
+C
+
+D
+
+E
+
+```
+
+
+
+El sistema no debe asumir una cantidad fija de categorías.
+
+
+
+\---
+
+
+
+\## Jerarquía de Categorías
+
+
+
+Las categorías siempre son jerárquicas.
+
+
+
+Ejemplo:
+
+
+
+```text
+
+A > B > C > D
+
+```
+
+
+
+La categoría superior representa un nivel competitivo superior.
 
 
 
@@ -554,11 +982,11 @@ Debe convertirse progresivamente en la fuente principal de configuración de las
 
 
 
-Julio 2026
+Julio 2026.
 
 
 
-Después de una auditoría completa del proyecto se concluyó:
+Después de una auditoría completa del proyecto y del análisis de reglamentos oficiales se concluyó:
 
 
 
@@ -582,7 +1010,7 @@ La principal deuda técnica está en los comandos de procesamiento.
 
 
 
-\## Problema identificado
+\## Problemas Identificados
 
 
 
@@ -630,11 +1058,7 @@ La prioridad es:
 
 
 
-Esto implica reemplazar reglas fijas por lectura desde:
-
-
-
-CompetenciaConfig
+Esto implica reemplazar reglas fijas por lectura desde configuraciones.
 
 
 
@@ -642,7 +1066,7 @@ CompetenciaConfig
 
 
 
-\## Campos estratégicos de CompetenciaConfig
+\## Campos Estratégicos de CompetenciaConfig
 
 
 
@@ -664,6 +1088,8 @@ Actualmente existen:
 
 \- tiene\_penales
 
+\- permite\_equipos
+
 \- usa\_tabla
 
 \- usa\_af
@@ -674,11 +1100,7 @@ Actualmente existen:
 
 
 
-Muchos procesos todavía no los utilizan.
-
-
-
-La próxima etapa consiste en conectar la configuración con los procesos.
+Muchos procesos todavía no los utilizan correctamente.
 
 
 
@@ -686,27 +1108,53 @@ La próxima etapa consiste en conectar la configuración con los procesos.
 
 
 
-\## Próximas Prioridades
+\## Objetivo de Largo Plazo
 
 
 
-\### Prioridad 1
+La creación futura de una competencia debería funcionar así:
 
 
 
-Eliminar hardcodeos.
+```text
+
+Seleccionar plantilla
+
+↓
+
+Generar configuración sugerida
+
+↓
+
+Modificar parámetros
+
+↓
+
+Crear competencia
+
+↓
+
+Generar estructura automáticamente
+
+```
 
 
 
-Archivos candidatos:
+Incluyendo:
 
 
 
-\- generar\_grupos\_copas.py
+\- participantes
 
-\- calcular\_clasificaciones\_grupo.py
+\- grupos
 
-\- calcular\_movimientos\_categoria.py
+\- instancias
+
+\- clasificaciones
+
+\- llaves
+
+\- tablas
 
 
 
@@ -714,39 +1162,29 @@ Archivos candidatos:
 
 
 
-\### Prioridad 2
+\## Integración API
 
 
 
-Refactorizar generación de instancias.
+La arquitectura futura contempla integración con APIs deportivas.
 
 
 
-Archivo principal:
+Objetivos:
 
 
 
-\- generar\_instancias\_2026.py
+\- fixture automático
+
+\- resultados automáticos
+
+\- cambios de programación
+
+\- partidos suspendidos
 
 
 
-\---
-
-
-
-\### Prioridad 3
-
-
-
-Motor de playoffs configurable.
-
-
-
-Objetivo:
-
-
-
-Generar rondas automáticamente según la configuración de la competencia.
+La aplicación debe seguir funcionando aunque no exista una API disponible.
 
 
 
@@ -772,6 +1210,8 @@ Antes de iniciar frontend se desea:
 
 \- estabilizar procesos
 
+\- consolidar generación automática
+
 
 
 \---
@@ -784,25 +1224,49 @@ Antes de iniciar frontend se desea:
 
 Modelo de Dominio:
 
+
+
+```text
+
 90%
+
+```
 
 
 
 Backend Funcional:
 
+
+
+```text
+
 90%
+
+```
 
 
 
 Backend Configurable:
 
+
+
+```text
+
 60%
+
+```
 
 
 
 Frontend:
 
+
+
+```text
+
 0%
+
+```
 
 
 
@@ -822,9 +1286,13 @@ Antes de implementar una funcionalidad importante:
 
 2\. Revisar si CompetenciaConfig ya contempla el caso.
 
-3\. Revisar repositorios de referencia utilizados por el proyecto.
+3\. Revisar PLAN\_REFACTOR\_2026.md.
 
-4\. Evitar agregar nuevos modelos cuando el problema pueda resolverse mediante configuración.
+4\. Revisar VISION\_LARGO\_PLAZO.md.
+
+5\. Revisar DECISIONES\_NEGOCIO.md.
+
+6\. Evitar agregar modelos cuando el problema pueda resolverse mediante configuración.
 
 
 
