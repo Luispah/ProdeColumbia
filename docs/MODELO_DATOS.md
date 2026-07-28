@@ -1,157 +1,433 @@
-# MODELO DATOS
+# MODELO_DATOS
 
-## Estado Actual
-
-### Implementado
-
-#### Personas
-
-- Participante
-- Categoria
-- Temporada
-- ParticipanteTemporada
+Fecha:
+2026-07-27
 
 ---
 
-#### Competiciones
+# Estado General
 
-- PlantillaCompetencia
-- Competencia
-- CompetenciaConfig
-- ParticipacionCompetencia
-- InstanciaCompetencia
+El modelo de datos principal se considera:
 
----
+✅ Implementado
 
-#### Fútbol Real
+✅ Validado funcionalmente
 
-- EquipoReal
-- CalendarioReal
-- PartidoReal
-- InstanciaPartido
+🔄 En proceso de aumento de configurabilidad
 
 ---
 
-#### Pronósticos
+# Entidades Implementadas
 
-- Pronostico
-- ResultadoPronostico
-- ResumenParticipanteInstancia
+## Personas
 
----
+### Participante
 
-## Pendiente
-
-### Competición
-
-- Enfrentamiento
+Representa una persona dentro del sistema.
 
 ---
 
-### Equipos Temporales
+### Categoria
 
-- EquipoTemporal
-- MiembroEquipoTemporal
+Representa una división deportiva.
 
----
+Ejemplos:
 
-### Históricos
-
-- RankingTemporada
-- ReglaClasificacion
-- ResultadoCompetencia
+- A
+- B
+- C
 
 ---
 
-## Flujo Principal
+### Temporada
 
-Participante
+Representa un ciclo anual.
 
-↓
+Ejemplos:
 
-ParticipanteTemporada
-
-↓
-
-Pronostico
-
-↓
-
-InstanciaPartido
-
-↓
-
-PartidoReal
-
-↓
-
-ResultadoPronostico
-
-↓
-
-ResumenParticipanteInstancia
-
-↓
-
-Enfrentamiento
-
-↓
-
-RankingTemporada
-
-↓
-
-ResultadoCompetencia
+- 2026
+- 2027
+- 2028
 
 ---
 
-## Flujo Fútbol Real
+### ParticipanteTemporada
 
-EquipoReal
+Representa la participación de una persona en una temporada determinada.
 
-↓
+Permite modelar:
 
-PartidoReal
-
-↓
-
-InstanciaPartido
-
-↓
-
-Pronostico
+- ascensos
+- descensos
+- reincorporaciones
+- nuevos participantes
+- histórico anual
 
 ---
 
-## Flujo Competitivo
+# Competiciones
 
-Competencia
+### PlantillaCompetencia
 
-↓
+Define un tipo de competencia reutilizable.
+
+---
+
+### Competencia
+
+Representa una edición concreta de una competencia.
+
+Ejemplos:
+
+- Liga Profesional Clausura 2026
+- Copa Libertadores 2026
+- Copa Sudamericana 2026
+
+---
+
+### CompetenciaConfig
+
+Entidad estratégica del sistema.
+
+Almacena la configuración de comportamiento de una competencia.
+
+Campos relevantes:
+
+- cantidad_participantes
+- cantidad_zonas
+- clasificados
+- cantidad_ascensos
+- cantidad_descensos
+- tiene_playoff
+- tiene_penales
+- usa_tabla
+- usa_af
+- usa_av
+- usa_da
+
+---
+
+### ParticipacionCompetencia
+
+Representa la inscripción de un participante dentro de una competencia.
+
+Permite registrar:
+
+- inscripto
+- activo
+- eliminado
+- clasificado
+- campeón
+- subcampeón
+
+---
+
+### InstanciaCompetencia
+
+Representa una unidad competitiva.
+
+Ejemplos:
+
+- Fecha 1
+- Fecha 2
+- Octavos
+- Cuartos
+- Semifinal
+- Final
+
+Tipos actualmente soportados:
+
+- FECHA
+- RONDA
+- PLAYOFF
+- FINAL
+- ESPECIAL
+
+---
+
+# Fútbol Real
+
+### EquipoReal
+
+Representa un equipo oficial.
+
+---
+
+### CalendarioReal
+
+Agrupa partidos reales.
+
+---
+
+### PartidoReal
+
+Representa un partido de fútbol real.
+
+Almacena:
+
+- equipos
+- fecha
+- goles
+- estado
+
+---
+
+### InstanciaPartido
+
+Relaciona:
 
 InstanciaCompetencia
 
 ↓
 
-InstanciaPartido
+PartidoReal
 
-↓
+Permite:
 
-ResumenParticipanteInstancia
-
-↓
-
-Enfrentamiento
-
-↓
-
-RankingTemporada
+- reutilizar partidos
+- excluir partidos
+- marcar penales
+- definir subconjuntos
 
 ---
 
-## Modelos Validados
+# Pronósticos
 
-### ParticipanteTemporada
+### Pronostico
+
+Representa una predicción realizada por un participante.
+
+Actualmente soporta:
+
+- Local
+- Empate
+- Visitante
+
+---
+
+### ResultadoPronostico
+
+Representa un pronóstico evaluado.
+
+Almacena:
+
+- resultado real
+- acierto
+- puntos
+
+---
+
+### ResumenParticipanteInstancia
+
+Consolida el rendimiento de un participante dentro de una instancia.
+
+Almacena:
+
+- partidos evaluados
+- AF
+- AV
+- puntos
+
+---
+
+# Núcleo Competitivo
+
+### Enfrentamiento
+
+Entidad central del dominio.
+
+Representa:
+
+```text
+Participante A
+vs
+Participante B
+```
+
+Almacena:
+
+- AF local
+- AF visitante
+- AV local
+- AV visitante
+- ganador
+- empate
+- puntos
+
+---
+
+# Tablas
+
+### TablaInstancia
+
+Representa la tabla correspondiente a una instancia.
+
+---
+
+### TablaCompetencia
+
+Representa la tabla acumulada de una competencia.
+
+---
+
+### TablaTemporada
+
+Representa la tabla anual consolidada.
+
+Es la fuente principal para:
+
+- ascensos
+- descensos
+- clasificación a copas
+
+---
+
+# Resultados Deportivos
+
+### ResultadoTemporada
+
+Representa el resultado deportivo final de una temporada.
+
+Valores actuales:
+
+- NINGUNO
+- LIBERTADORES
+- SUDAMERICANA
+- ASCENSO
+- DESCENSO
+- REPECHAJE
+
+---
+
+### MovimientoCategoria
+
+Representa el movimiento entre categorías.
+
+Valores:
+
+- ASCENSO
+- DESCENSO
+- MANTIENE
+
+---
+
+# Copas
+
+### GrupoCompetencia
+
+Representa un grupo dentro de una copa.
+
+Ejemplos:
+
+- Grupo A
+- Grupo B
+- Grupo C
+- Grupo D
+
+---
+
+### ParticipacionGrupo
+
+Relaciona participantes con grupos.
+
+---
+
+### TablaGrupo
+
+Representa posiciones dentro de un grupo.
+
+Almacena:
+
+- posición
+- PJ
+- PG
+- PE
+- PP
+- puntos
+- AF
+- AV
+
+---
+
+### ClasificacionGrupo
+
+Representa el resultado final de la fase de grupos.
+
+Valores:
+
+- CLASIFICADO
+- ELIMINADO
+
+---
+
+### LlaveCompetencia
+
+Representa un cruce eliminatorio.
+
+Almacena:
+
+- competencia
+- orden
+- participante_1
+- participante_2
+- ganador
+- resuelta
+
+Actualmente soporta los playoffs implementados en la versión actual.
+
+---
+
+# Flujo Principal
+
+```text
+Participante
+↓
+ParticipanteTemporada
+↓
+Pronostico
+↓
+ResultadoPronostico
+↓
+ResumenParticipanteInstancia
+↓
+Enfrentamiento
+↓
+TablaInstancia
+↓
+TablaCompetencia
+↓
+TablaTemporada
+↓
+ResultadoTemporada
+↓
+MovimientoCategoria
+```
+
+---
+
+# Flujo Copas
+
+```text
+ParticipacionCompetencia
+↓
+GrupoCompetencia
+↓
+ParticipacionGrupo
+↓
+TablaGrupo
+↓
+ClasificacionGrupo
+↓
+LlaveCompetencia
+↓
+Campeón
+```
+
+---
+
+# Modelos Validados
+
+## ParticipanteTemporada
 
 Validado.
 
@@ -159,12 +435,12 @@ Permite:
 
 - ascensos
 - descensos
-- reincorporaciones
 - históricos
+- reincorporaciones
 
 ---
 
-### InstanciaCompetencia
+## InstanciaCompetencia
 
 Validada.
 
@@ -174,23 +450,24 @@ Soporta:
 - rondas
 - playoffs
 - finales
+- etapas especiales
 
 ---
 
-### InstanciaPartido
+## InstanciaPartido
 
 Validada.
 
 Permite:
 
-- reutilizar partidos reales
-- marcar penales
-- excluir partidos
+- reutilización de partidos
+- penales
+- exclusiones
 - subconjuntos de partidos
 
 ---
 
-### Pronostico
+## Pronostico
 
 Validado.
 
@@ -200,11 +477,11 @@ Actualmente soporta:
 - Empate
 - Visitante
 
-Diseñado para permitir futuras extensiones.
+Preparado para futuras extensiones.
 
 ---
 
-### ResultadoPronostico
+## ResultadoPronostico
 
 Validado mediante pruebas reales.
 
@@ -212,22 +489,15 @@ Permite:
 
 - calcular aciertos
 - calcular puntos
-- obtener resultado real derivado
+- derivar resultados oficiales
 
 ---
 
-### ResumenParticipanteInstancia
+## ResumenParticipanteInstancia
 
 Validado mediante pruebas reales.
 
-Permite almacenar:
-
-- partidos evaluados
-- AF
-- AV
-- puntos
-
-Es la base para:
+Base para:
 
 - enfrentamientos
 - tablas
@@ -236,10 +506,116 @@ Es la base para:
 
 ---
 
-## Observaciones
+## Enfrentamiento
 
-DA no pertenece al resumen individual.
+Validado.
 
-DA pertenece al enfrentamiento entre dos participantes.
+Permite:
 
-Será calculado dentro de la entidad Enfrentamiento.
+- determinar ganador
+- determinar empate
+- asignar puntos
+
+---
+
+## Tablas
+
+Validadas:
+
+- TablaInstancia
+- TablaCompetencia
+- TablaTemporada
+
+---
+
+## Copas
+
+Validadas en versión actual:
+
+- grupos
+- clasificaciones
+- playoffs
+- llaves
+
+---
+
+# Hallazgos de Auditoría
+
+Julio 2026
+
+Luego de revisar modelos y procesos se concluyó:
+
+## El modelo de datos está más avanzado que los comandos
+
+La mayoría de las estructuras necesarias ya existen.
+
+No se identifican refactors urgentes del modelo.
+
+---
+
+## La principal deuda está en los procesos
+
+Muchos comandos todavía utilizan valores hardcodeados.
+
+Ejemplos:
+
+- cantidad de grupos
+- clasificados
+- ascensos
+- descensos
+- rondas
+- instancias
+
+---
+
+## CompetenciaConfig debe convertirse en la fuente de verdad
+
+La próxima etapa consiste en reemplazar configuraciones fijas por lectura de:
+
+CompetenciaConfig
+
+---
+
+# Entidades Futuras
+
+Pendientes de implementación.
+
+## Equipos Temporales
+
+- EquipoTemporal
+- MiembroEquipoTemporal
+
+Necesarios para:
+
+- Supercopa
+- formatos por equipos
+
+---
+
+## Históricos
+
+Posibles entidades futuras:
+
+- HallOfFame
+- Rivalidad
+- RecordHistorico
+
+No existen todavía en el modelo actual.
+
+---
+
+# Estado del Modelo
+
+Modelo de Dominio:
+90%
+
+Modelo de Datos:
+90%
+
+Backend Funcional:
+90%
+
+Backend Configurable:
+60%
+
+El modelo actual se considera suficientemente estable para continuar la evolución mediante refactor de procesos y no mediante incorporación masiva de nuevas entidades.

@@ -1,24 +1,10 @@
-\# DECISIONES TECNICAS
+\# DECISIONES\_TECNICAS
 
 
 
-\## 2026-07-18
+Fecha de actualización:
 
-
-
-Se adopta Django como framework principal.
-
-
-
-\---
-
-
-
-\## 2026-07-18
-
-
-
-Se adopta GitHub como repositorio oficial del proyecto.
+2026-07-27
 
 
 
@@ -26,7 +12,49 @@ Se adopta GitHub como repositorio oficial del proyecto.
 
 
 
-\## 2026-07-18
+\# 2026-07-18
+
+
+
+Se adopta Django como framework principal del proyecto.
+
+
+
+Motivos:
+
+
+
+\- madurez
+
+\- ORM integrado
+
+\- Django Admin
+
+\- velocidad de desarrollo
+
+
+
+\---
+
+
+
+\# 2026-07-18
+
+
+
+Se adopta GitHub como repositorio oficial.
+
+
+
+Todo desarrollo deberá versionarse mediante Git.
+
+
+
+\---
+
+
+
+\# 2026-07-18
 
 
 
@@ -34,11 +62,19 @@ Se adopta SQLite para desarrollo local.
 
 
 
+Objetivo futuro:
+
+
+
+\- PostgreSQL en producción
+
+
+
 \---
 
 
 
-\## 2026-07-18
+\# 2026-07-18
 
 
 
@@ -50,11 +86,19 @@ Se administrarán mediante datos de negocio.
 
 
 
+Motivo:
+
+
+
+Permitir futuras modificaciones sin cambios de código.
+
+
+
 \---
 
 
 
-\## 2026-07-20
+\# 2026-07-20
 
 
 
@@ -66,15 +110,11 @@ La categoría pasa a vivir en ParticipanteTemporada.
 
 
 
-\---
+Motivo:
 
 
 
-\## 2026-07-20
-
-
-
-Se adopta PlantillaCompetencia como mecanismo base para generar competiciones.
+La categoría es una condición deportiva anual y no una característica permanente de una persona.
 
 
 
@@ -82,11 +122,27 @@ Se adopta PlantillaCompetencia como mecanismo base para generar competiciones.
 
 
 
-\## 2026-07-20
+\# 2026-07-20
 
 
 
-Se adopta CompetenciaConfig para parametrizar reglas de negocio sin modificar código.
+Se adopta PlantillaCompetencia como mecanismo principal para crear competiciones.
+
+
+
+Motivo:
+
+
+
+Separar:
+
+
+
+\- definición
+
+\- configuración
+
+\- ejecución
 
 
 
@@ -94,7 +150,45 @@ Se adopta CompetenciaConfig para parametrizar reglas de negocio sin modificar c�
 
 
 
-\## 2026-07-20
+\# 2026-07-20
+
+
+
+Se adopta CompetenciaConfig como entidad estratégica de configuración.
+
+
+
+Objetivo:
+
+
+
+Permitir que las reglas deportivas se definan mediante datos y no mediante código.
+
+
+
+Ejemplos:
+
+
+
+\- participantes
+
+\- grupos
+
+\- clasificados
+
+\- playoffs
+
+\- ascensos
+
+\- descensos
+
+
+
+\---
+
+
+
+\# 2026-07-20
 
 
 
@@ -102,23 +196,27 @@ InstanciaCompetencia reemplaza el concepto tradicional de Fecha.
 
 
 
-El objetivo es soportar:
+Puede representar:
 
 
 
-\- fechas
+\- Fecha
 
-\- rondas
+\- Ronda
 
-\- playoffs
+\- Playoff
 
-\- finales
+\- Final
 
-\- fases especiales
+\- Etapa especial
 
 
 
-mediante una única entidad.
+Motivo:
+
+
+
+Utilizar una única abstracción para distintos formatos competitivos.
 
 
 
@@ -126,7 +224,7 @@ mediante una única entidad.
 
 
 
-\## 2026-07-20
+\# 2026-07-20
 
 
 
@@ -134,7 +232,11 @@ Los partidos reales son independientes de las competiciones.
 
 
 
-Un mismo partido puede ser reutilizado por múltiples competiciones.
+Motivo:
+
+
+
+Un mismo partido real puede ser reutilizado por múltiples competiciones.
 
 
 
@@ -142,7 +244,7 @@ Un mismo partido puede ser reutilizado por múltiples competiciones.
 
 
 
-\## 2026-07-20
+\# 2026-07-20
 
 
 
@@ -150,7 +252,11 @@ Se adopta InstanciaPartido como entidad puente entre:
 
 
 
+```text
+
 InstanciaCompetencia
+
+```
 
 
 
@@ -158,7 +264,11 @@ y
 
 
 
+```text
+
 PartidoReal
+
+```
 
 
 
@@ -172,7 +282,7 @@ Motivos:
 
 \- penales
 
-\- subconjuntos de partidos
+\- subconjuntos
 
 \- flexibilidad futura
 
@@ -182,7 +292,7 @@ Motivos:
 
 
 
-\## 2026-07-20
+\# 2026-07-20
 
 
 
@@ -190,15 +300,11 @@ Enfrentamiento se define como la entidad competitiva principal del sistema.
 
 
 
-\---
+Motivo:
 
 
 
-\## 2026-07-20
-
-
-
-Se incorpora RankingTemporada.
+Toda la lógica deportiva termina resolviéndose mediante enfrentamientos entre participantes.
 
 
 
@@ -206,35 +312,7 @@ Se incorpora RankingTemporada.
 
 
 
-\## 2026-07-20
-
-
-
-Se incorpora ReglaClasificacion.
-
-
-
-\---
-
-
-
-\## 2026-07-20
-
-
-
-La Supercopa utilizará equipos temporales.
-
-
-
-No utilizará participantes individuales directamente.
-
-
-
-\---
-
-
-
-\## 2026-07-21
+\# 2026-07-21
 
 
 
@@ -248,13 +326,13 @@ Motivos:
 
 \- nombres oficiales
 
-\- importación desde APIs
-
 \- escudos
+
+\- integraciones
 
 \- históricos
 
-\- eliminación de duplicación de textos
+\- eliminación de duplicaciones
 
 
 
@@ -262,19 +340,15 @@ Motivos:
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Se utilizarán nombres oficiales de equipos como única fuente de verdad.
+Los equipos utilizarán nombres oficiales como única fuente de verdad.
 
 
 
-No se implementarán alias internos como estrategia principal.
-
-
-
-Las boletas futuras deberán utilizar la misma nomenclatura que el sistema.
+No se utilizarán alias internos como estrategia principal.
 
 
 
@@ -282,11 +356,11 @@ Las boletas futuras deberán utilizar la misma nomenclatura que el sistema.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Los resultados reales se almacenan mediante:
+Los resultados oficiales se almacenan mediante:
 
 
 
@@ -296,7 +370,7 @@ Los resultados reales se almacenan mediante:
 
 
 
-El sistema deriva automáticamente:
+El sistema deriva:
 
 
 
@@ -308,7 +382,7 @@ El sistema deriva automáticamente:
 
 
 
-a partir de dichos valores.
+cuando sea necesario.
 
 
 
@@ -316,7 +390,7 @@ a partir de dichos valores.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
@@ -332,7 +406,7 @@ Los pronósticos se almacenan inicialmente como:
 
 
 
-El diseño deberá permitir soportar en el futuro:
+El modelo deberá soportar en el futuro:
 
 
 
@@ -340,7 +414,7 @@ El diseño deberá permitir soportar en el futuro:
 
 \- modalidades especiales
 
-\- reglas particulares por competición
+\- reglas particulares
 
 
 
@@ -352,7 +426,7 @@ sin rediseñar el dominio.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
@@ -376,7 +450,7 @@ No almacena AF ni AV.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
@@ -384,7 +458,23 @@ AF y AV se calculan a partir de ResultadoPronostico.
 
 
 
-Luego se persisten en ResumenParticipanteInstancia.
+Posteriormente se persisten en:
+
+
+
+```text
+
+ResumenParticipanteInstancia
+
+```
+
+
+
+Motivo:
+
+
+
+Evitar recálculos permanentes.
 
 
 
@@ -392,7 +482,7 @@ Luego se persisten en ResumenParticipanteInstancia.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
@@ -400,37 +490,15 @@ DA no pertenece al resumen individual.
 
 
 
-DA pertenece al enfrentamiento entre dos participantes.
+DA pertenece a un enfrentamiento entre participantes.
 
 
 
-Por lo tanto no se almacena en ResumenParticipanteInstancia.
+Por lo tanto:
 
 
 
-\---
-
-
-
-\## 2026-07-21
-
-
-
-Se valida la persistencia de:
-
-
-
-\- partidos evaluados
-
-\- AF
-
-\- AV
-
-\- puntos
-
-
-
-mediante ResumenParticipanteInstancia.
+No se almacena en ResumenParticipanteInstancia.
 
 
 
@@ -438,63 +506,35 @@ mediante ResumenParticipanteInstancia.
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Se adopta la estrategia:
+Se adopta persistencia de cálculos.
 
 
 
-Backend primero.
+Los resultados importantes deben almacenarse.
 
 
 
-Orden de implementación:
+Ejemplos:
 
 
 
-\- Dominio
+\- ResultadoPronostico
 
-\- Persistencia
+\- ResumenParticipanteInstancia
 
-\- Lógica de negocio
+\- TablaInstancia
 
-\- Automatizaciones
+\- TablaCompetencia
 
-\- Frontend
+\- TablaTemporada
 
+\- ResultadoTemporada
 
-
-El Django Admin será utilizado como interfaz operativa durante el desarrollo.
-
-
-
-\---
-
-
-
-\## 2026-07-21
-
-
-
-Se decide soportar carga administrativa de boletas.
-
-
-
-Un administrador podrá cargar pronósticos para terceros.
-
-
-
-Se implementará auditoría para registrar:
-
-
-
-\- propietario de la boleta
-
-\- usuario que realizó la carga
-
-\- fechas de modificación
+\- MovimientoCategoria
 
 
 
@@ -502,11 +542,113 @@ Se implementará auditoría para registrar:
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Se define como requisito futuro el bloqueo automático de boletas.
+Se adopta estrategia:
+
+
+
+```text
+
+Backend primero
+
+```
+
+
+
+Orden oficial:
+
+
+
+```text
+
+Dominio
+
+↓
+
+Persistencia
+
+↓
+
+Lógica de negocio
+
+↓
+
+Automatizaciones
+
+↓
+
+Frontend
+
+```
+
+
+
+Django Admin será utilizado como interfaz operativa durante el desarrollo.
+
+
+
+\---
+
+
+
+\# 2026-07-21
+
+
+
+Se habilitará carga administrativa de boletas.
+
+
+
+Los administradores podrán:
+
+
+
+\- crear pronósticos
+
+\- modificar pronósticos
+
+\- cargar por terceros
+
+
+
+\---
+
+
+
+\# 2026-07-21
+
+
+
+Se define auditoría obligatoria para futuras cargas.
+
+
+
+Deberá registrarse:
+
+
+
+\- propietario
+
+\- usuario cargador
+
+\- fecha creación
+
+\- fecha modificación
+
+
+
+\---
+
+
+
+\# 2026-07-21
+
+
+
+Se define bloqueo automático de boletas.
 
 
 
@@ -514,7 +656,13 @@ Objetivo inicial:
 
 
 
-1 hora antes del primer partido válido de la instancia.
+```text
+
+1 hora antes del primer partido válido
+
+de la instancia
+
+```
 
 
 
@@ -522,11 +670,11 @@ Objetivo inicial:
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Se define como requisito futuro que las boletas sean:
+Se define visibilidad diferida de boletas.
 
 
 
@@ -550,13 +698,497 @@ Después del cierre:
 
 
 
-\## 2026-07-21
+\# 2026-07-21
 
 
 
-Los escudos de equipos deberán almacenarse localmente.
+Los escudos deberán almacenarse localmente.
 
 
 
-Se evitará depender permanentemente de APIs externas para su visualización.
+Motivo:
+
+
+
+Reducir dependencia de APIs externas.
+
+
+
+\---
+
+
+
+\# 2026-07-25
+
+
+
+Se incorpora el modelo completo de tablas deportivas.
+
+
+
+Implementaciones:
+
+
+
+\- TablaInstancia
+
+\- TablaCompetencia
+
+\- TablaTemporada
+
+
+
+Decisión:
+
+
+
+Mantener tablas persistidas en base de datos.
+
+
+
+Motivo:
+
+
+
+Simplificar consultas futuras y frontend.
+
+
+
+\---
+
+
+
+\# 2026-07-25
+
+
+
+Se incorpora ResultadoTemporada.
+
+
+
+Motivo:
+
+
+
+Separar consecuencias deportivas finales de las tablas.
+
+
+
+Ejemplos:
+
+
+
+\- Libertadores
+
+\- Sudamericana
+
+\- Ascenso
+
+\- Descenso
+
+\- Repechaje
+
+
+
+\---
+
+
+
+\# 2026-07-25
+
+
+
+Se incorpora MovimientoCategoria.
+
+
+
+Motivo:
+
+
+
+Representar explícitamente:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- permanencias
+
+
+
+sin recalcularlos continuamente.
+
+
+
+\---
+
+
+
+\# 2026-07-26
+
+
+
+Se incorpora soporte para copas.
+
+
+
+Implementaciones:
+
+
+
+\- GrupoCompetencia
+
+\- ParticipacionGrupo
+
+\- TablaGrupo
+
+\- ClasificacionGrupo
+
+\- LlaveCompetencia
+
+
+
+Motivo:
+
+
+
+Separar fases de grupos y eliminación directa.
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Auditoría integral del proyecto.
+
+
+
+Se revisaron:
+
+
+
+\- documentación
+
+\- modelos
+
+\- comandos
+
+\- flujo competitivo
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Conclusión de auditoría:
+
+
+
+\## El modelo está más avanzado que los procesos.
+
+
+
+No se identifican refactors urgentes sobre:
+
+
+
+\- Competencia
+
+\- CompetenciaConfig
+
+\- Enfrentamiento
+
+\- Tablas
+
+\- Copas
+
+
+
+La principal deuda técnica actual se encuentra en los comandos.
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Se decide NO realizar una refactor inmediata de modelos.
+
+
+
+Especialmente:
+
+
+
+```text
+
+NO modificar todavía:
+
+
+
+\- CompetenciaConfig
+
+\- InstanciaCompetencia
+
+\- LlaveCompetencia
+
+```
+
+
+
+Motivo:
+
+
+
+El problema principal no está en la estructura de datos.
+
+
+
+Está en la utilización de configuraciones.
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Se redefine la prioridad técnica del proyecto.
+
+
+
+Antes:
+
+
+
+```text
+
+Refactor modelos
+
+```
+
+
+
+Ahora:
+
+
+
+```text
+
+Refactor procesos
+
+```
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+CompetenciaConfig se define formalmente como:
+
+
+
+\## Fuente única de configuración.
+
+
+
+Toda nueva funcionalidad deberá verificar primero si puede resolverse mediante configuración.
+
+
+
+Antes de:
+
+
+
+\- crear modelos
+
+\- agregar campos
+
+\- agregar lógica específica
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Se identifica como deuda técnica principal la existencia de hardcodeos en comandos.
+
+
+
+Ejemplos:
+
+
+
+\- cantidad de grupos
+
+\- clasificados
+
+\- ascensos
+
+\- descensos
+
+\- instancias
+
+\- rondas
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Se establece el siguiente orden oficial de refactor.
+
+
+
+\## Prioridad 1
+
+
+
+Eliminar hardcodeos de:
+
+
+
+\- generar\_grupos\_copas.py
+
+\- calcular\_clasificaciones\_grupo.py
+
+\- calcular\_movimientos\_categoria.py
+
+
+
+\---
+
+
+
+\## Prioridad 2
+
+
+
+Refactorizar:
+
+
+
+\- generar\_instancias\_2026.py
+
+
+
+\---
+
+
+
+\## Prioridad 3
+
+
+
+Implementar playoffs dinámicos.
+
+
+
+\---
+
+
+
+\# 2026-07-27
+
+
+
+Se posterga el inicio del frontend.
+
+
+
+Motivo:
+
+
+
+Primero consolidar:
+
+
+
+\- CompetenciaConfig
+
+\- generación dinámica de instancias
+
+\- playoffs dinámicos
+
+
+
+\---
+
+
+
+\# Estado Actual
+
+
+
+Modelo de Dominio:
+
+90%
+
+
+
+Backend Funcional:
+
+90%
+
+
+
+Backend Configurable:
+
+60%
+
+
+
+Frontend:
+
+0%
+
+
+
+\---
+
+
+
+\# Decisión Vigente
+
+
+
+La prioridad del proyecto ya no es agregar más modelos.
+
+
+
+La prioridad es transformar un backend funcional en un backend completamente configurable mediante CompetenciaConfig.
 

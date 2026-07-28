@@ -1,8 +1,10 @@
-\# PENDIENTES FUNCIONALES
+\# PENDIENTES\_FUNCIONALES
 
 
 
-Este documento registra funcionalidades aprobadas conceptualmente pero aún no implementadas.
+Fecha de actualización:
+
+2026-07-27
 
 
 
@@ -10,7 +12,35 @@ Este documento registra funcionalidades aprobadas conceptualmente pero aún no i
 
 
 
-\# Alta Prioridad
+\# PENDIENTES FUNCIONALES
+
+
+
+Este documento registra funcionalidades aprobadas conceptualmente pero todavía no implementadas.
+
+
+
+No incluye deuda técnica.
+
+
+
+No incluye refactors internos.
+
+
+
+No incluye mejoras de arquitectura.
+
+
+
+Únicamente funcionalidades visibles o comportamientos de negocio pendientes.
+
+
+
+\---
+
+
+
+\# Prioridad Alta
 
 
 
@@ -22,7 +52,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -38,7 +68,13 @@ Objetivo inicial:
 
 
 
-\- 1 hora antes del primer partido válido de la instancia.
+```text
+
+1 hora antes del primer partido válido
+
+de la instancia
+
+```
 
 
 
@@ -46,11 +82,27 @@ Ejemplo:
 
 
 
+```text
+
 Primer partido: 20:00
 
 
 
 Cierre: 19:00
+
+```
+
+
+
+Una vez alcanzado el horario de cierre:
+
+
+
+\- no podrán modificarse pronósticos
+
+\- no podrán agregarse pronósticos
+
+\- la boleta quedará bloqueada
 
 
 
@@ -66,7 +118,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -74,7 +126,7 @@ Antes del cierre:
 
 
 
-\- cada participante sólo puede visualizar su propia boleta
+\- cada participante visualiza únicamente su propia boleta
 
 
 
@@ -83,6 +135,14 @@ Después del cierre:
 
 
 \- todos los participantes pueden visualizar todas las boletas
+
+
+
+Objetivo:
+
+
+
+Garantizar confidencialidad previa al inicio de los partidos.
 
 
 
@@ -98,7 +158,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -110,7 +170,7 @@ Los administradores deberán poder:
 
 \- modificar boletas
 
-\- cargar pronósticos para terceros
+\- cargar pronósticos por terceros
 
 
 
@@ -118,7 +178,7 @@ Objetivo:
 
 
 
-Permitir la participación de usuarios que no utilicen habitualmente la plataforma.
+Facilitar la participación de usuarios con poca experiencia informática.
 
 
 
@@ -134,11 +194,11 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
-Registrar:
+Debe registrarse:
 
 
 
@@ -176,11 +236,11 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
-El sistema deberá detectar automáticamente los partidos donde dos participantes realizaron pronósticos diferentes.
+El sistema deberá detectar automáticamente partidos donde dos participantes tengan pronósticos diferentes.
 
 
 
@@ -188,19 +248,35 @@ Ejemplo:
 
 
 
-Pablo: Local
+```text
 
-
-
-Alejandro: Visitante
-
-
+Participante A
 
 ↓
 
+Local
 
 
-Partido decisivo.
+
+Participante B
+
+↓
+
+Visitante
+
+```
+
+
+
+Resultado:
+
+
+
+```text
+
+Partido decisivo
+
+```
 
 
 
@@ -208,7 +284,7 @@ Objetivo:
 
 
 
-Destacar visualmente los partidos que realmente pueden modificar el resultado de un enfrentamiento.
+Identificar los partidos que realmente pueden producir diferencias deportivas entre dos participantes.
 
 
 
@@ -224,7 +300,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -242,7 +318,17 @@ Objetivo:
 
 
 
-Utilización en frontend y reportes.
+Utilización en:
+
+
+
+\- frontend
+
+\- tablas
+
+\- reportes
+
+\- estadísticas
 
 
 
@@ -258,7 +344,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -266,7 +352,11 @@ Configurar:
 
 
 
+```text
+
 America/Argentina/Buenos\_Aires
+
+```
 
 
 
@@ -274,7 +364,205 @@ Objetivo:
 
 
 
-Eliminar diferencias entre horario del servidor y horario mostrado al usuario.
+Evitar diferencias entre:
+
+
+
+\- horario del servidor
+
+\- horario visible al usuario
+
+
+
+\---
+
+
+
+\## Generación Automática de Temporadas
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+Objetivo:
+
+
+
+Permitir generar automáticamente una nueva temporada utilizando los resultados de la temporada anterior.
+
+
+
+Deberá contemplar:
+
+
+
+\- ascensos
+
+\- descensos
+
+\- participantes activos
+
+\- reincorporaciones
+
+
+
+La propuesta generada deberá poder modificarse manualmente antes de confirmarse.
+
+
+
+\---
+
+
+
+\# Prioridad Media-Baja
+
+
+
+\## Equipos Temporales
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+Implementaciones futuras:
+
+
+
+\- EquipoTemporal
+
+\- MiembroEquipoTemporal
+
+
+
+Objetivo:
+
+
+
+Soportar:
+
+
+
+\- Supercopa
+
+\- competencias por equipos
+
+\- formatos especiales
+
+
+
+\---
+
+
+
+\## Hall of Fame
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+Objetivo:
+
+
+
+Mantener históricos de:
+
+
+
+\- campeones
+
+\- subcampeones
+
+\- récords
+
+\- títulos
+
+
+
+\---
+
+
+
+\## Rivalidades
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+Objetivo:
+
+
+
+Generar historial entre participantes.
+
+
+
+Ejemplos:
+
+
+
+\- enfrentamientos disputados
+
+\- victorias
+
+\- empates
+
+\- derrotas
+
+
+
+\---
+
+
+
+\## Estadísticas Históricas
+
+
+
+Estado:
+
+
+
+⏳ PENDIENTE
+
+
+
+Posibles métricas:
+
+
+
+\- AF histórico
+
+\- AV histórico
+
+\- efectividad
+
+\- rendimiento por competencia
+
+\- rendimiento por temporada
 
 
 
@@ -294,7 +582,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -302,19 +590,27 @@ Actualmente:
 
 
 
-\- Local
+```text
 
-\- Empate
+Local
 
-\- Visitante
+Empate
+
+Visitante
+
+```
 
 
 
-A futuro algunas competiciones podrían utilizar:
+A futuro deberá poder soportarse:
 
 
 
-\- resultado exacto
+```text
+
+Resultado exacto
+
+```
 
 
 
@@ -322,11 +618,15 @@ Ejemplo:
 
 
 
+```text
+
 River 2 - 1 Boca
 
+```
 
 
-El dominio deberá soportarlo sin rediseños importantes.
+
+La implementación no debe requerir rediseñar el dominio existente.
 
 
 
@@ -342,7 +642,7 @@ Estado:
 
 
 
-PENDIENTE
+⏳ PENDIENTE
 
 
 
@@ -356,11 +656,19 @@ Aplicable principalmente a:
 
 \- Copa Argentina
 
-\- Libertadores
+\- Copa Libertadores
 
-\- Sudamericana
+\- Copa Sudamericana
 
 \- Supercopa
+
+
+
+Objetivo:
+
+
+
+Automatizar cruces cuando el reglamento lo requiera.
 
 
 
@@ -368,13 +676,181 @@ Aplicable principalmente a:
 
 
 
-\# Observaciones
+\# Fuera de Alcance Inmediato
 
 
 
-La existencia de un pendiente en este documento no implica que deba implementarse inmediatamente.
+Las siguientes tareas NO forman parte de la prioridad actual:
 
 
 
-Este documento funciona como memoria funcional del proyecto para evitar perder acuerdos tomados durante el análisis y desarrollo.
+\- rediseño completo del frontend
+
+\- aplicaciones móviles
+
+\- APIs públicas
+
+\- integración con redes sociales
+
+
+
+\---
+
+
+
+\# Situación Actual
+
+
+
+El backend principal ya permite:
+
+
+
+```text
+
+Participante
+
+↓
+
+ParticipanteTemporada
+
+↓
+
+Pronostico
+
+↓
+
+ResultadoPronostico
+
+↓
+
+ResumenParticipanteInstancia
+
+↓
+
+Enfrentamiento
+
+↓
+
+TablaInstancia
+
+↓
+
+TablaCompetencia
+
+↓
+
+TablaTemporada
+
+↓
+
+ResultadoTemporada
+
+↓
+
+MovimientoCategoria
+
+```
+
+
+
+y además:
+
+
+
+```text
+
+ParticipacionCompetencia
+
+↓
+
+GrupoCompetencia
+
+↓
+
+ParticipacionGrupo
+
+↓
+
+TablaGrupo
+
+↓
+
+ClasificacionGrupo
+
+↓
+
+LlaveCompetencia
+
+↓
+
+Campeón
+
+```
+
+
+
+Por lo tanto los pendientes actuales corresponden principalmente a:
+
+
+
+\- experiencia de usuario
+
+\- administración
+
+\- históricos
+
+\- automatizaciones
+
+\- frontend
+
+
+
+y no al flujo competitivo principal.
+
+
+
+\---
+
+
+
+\# Observación Importante
+
+
+
+Luego de la auditoría de julio de 2026 se concluyó que:
+
+
+
+```text
+
+La principal deuda actual del proyecto
+
+NO es funcional.
+
+```
+
+
+
+La principal deuda actual es técnica y consiste en reemplazar los hardcodeos existentes por configuraciones basadas en:
+
+
+
+```text
+
+CompetenciaConfig
+
+```
+
+
+
+Dicha tarea se encuentra documentada en:
+
+
+
+\- ROADMAP.md
+
+\- IA\_CONTEXT.md
+
+\- DECISIONES\_TECNICAS.md
 

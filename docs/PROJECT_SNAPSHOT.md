@@ -4,9 +4,59 @@
 
 Fecha:
 
+2026-07-27
 
 
-2026-07-21
+
+\---
+
+
+
+\# Proyecto
+
+
+
+ProdeColumbia
+
+
+
+Sistema integral para administrar el Prode Columbia.
+
+
+
+No es solamente un sistema de pronósticos.
+
+
+
+Modela:
+
+
+
+\- Participantes
+
+\- Temporadas
+
+\- Categorías
+
+\- Competiciones
+
+\- Pronósticos
+
+\- Resultados
+
+\- Enfrentamientos
+
+\- Tablas
+
+\- Clasificaciones
+
+\- Ascensos
+
+\- Descensos
+
+\- Copas internacionales
+
+\- Históricos
 
 
 
@@ -18,51 +68,27 @@ Fecha:
 
 
 
-Proyecto:
+Estado global:
 
 
 
-ProdeColumbia
+✅ Backend funcional
 
 
 
-Repositorio GitHub operativo.
+✅ Modelo de dominio consolidado
 
 
 
-Dominio V1 implementado parcialmente y validado mediante pruebas reales.
+✅ Flujo competitivo implementado
 
 
 
-Arquitectura principal consolidada.
+⚠️ Configuración parcialmente utilizada
 
 
 
-\---
-
-
-
-\# Entorno
-
-
-
-Python 3.14
-
-
-
-Django 6
-
-
-
-SQLite
-
-
-
-Git
-
-
-
-GitHub
+⏳ Frontend pendiente
 
 
 
@@ -70,11 +96,11 @@ GitHub
 
 
 
-\# Estado Actual
+\# Estado Actual del Backend
 
 
 
-La aplicación ya puede ejecutar el flujo completo:
+Actualmente el sistema puede ejecutar:
 
 
 
@@ -102,23 +128,7 @@ Pronóstico
 
 
 
-InstanciaPartido
-
-
-
-↓
-
-
-
-PartidoReal
-
-
-
-↓
-
-
-
-ResultadoPronostico
+ResultadoPronóstico
 
 
 
@@ -130,6 +140,84 @@ ResumenParticipanteInstancia
 
 
 
+↓
+
+
+
+Enfrentamiento
+
+
+
+↓
+
+
+
+TablaInstancia
+
+
+
+↓
+
+
+
+TablaCompetencia
+
+
+
+↓
+
+
+
+TablaTemporada
+
+
+
+↓
+
+
+
+ResultadoTemporada
+
+
+
+↓
+
+
+
+MovimientoCategoria
+
+
+
+\---
+
+
+
+\# Competiciones Implementadas
+
+
+
+Actualmente existen modelos para:
+
+
+
+\- Liga Profesional Clausura
+
+\- Copa Libertadores
+
+\- Copa Sudamericana
+
+\- Copa Repechaje
+
+\- Copa Argentina
+
+\- Supercopa
+
+
+
+La arquitectura permite nuevas competiciones futuras.
+
+
+
 \---
 
 
@@ -138,7 +226,7 @@ ResumenParticipanteInstancia
 
 
 
-\## Base
+\## Personas
 
 
 
@@ -147,6 +235,8 @@ ResumenParticipanteInstancia
 \- Categoria
 
 \- Temporada
+
+\- ParticipanteTemporada
 
 
 
@@ -180,7 +270,7 @@ ResumenParticipanteInstancia
 
 
 
-\## Juego
+\## Pronósticos
 
 
 
@@ -192,11 +282,189 @@ ResumenParticipanteInstancia
 
 
 
+\## Núcleo Competitivo
+
+
+
+\- Enfrentamiento
+
+
+
+\## Tablas
+
+
+
+\- TablaInstancia
+
+\- TablaCompetencia
+
+\- TablaTemporada
+
+
+
+\## Resultados Deportivos
+
+
+
+\- ResultadoTemporada
+
+\- MovimientoCategoria
+
+
+
+\## Copas
+
+
+
+\- GrupoCompetencia
+
+\- ParticipacionGrupo
+
+\- TablaGrupo
+
+\- ClasificacionGrupo
+
+\- LlaveCompetencia
+
+
+
 \---
 
 
 
-\# Datos Existentes
+\# Funcionalidades Implementadas
+
+
+
+\## Pronósticos
+
+
+
+✅ Generación
+
+
+
+✅ Evaluación
+
+
+
+✅ Cálculo de aciertos
+
+
+
+✅ Cálculo de puntos
+
+
+
+\---
+
+
+
+\## Enfrentamientos
+
+
+
+✅ Generación
+
+
+
+✅ Resolución
+
+
+
+✅ Victoria
+
+
+
+✅ Derrota
+
+
+
+✅ Empate
+
+
+
+\---
+
+
+
+\## Tablas
+
+
+
+✅ Tabla por instancia
+
+
+
+✅ Tabla por competencia
+
+
+
+✅ Tabla anual
+
+
+
+✅ Posiciones
+
+
+
+\---
+
+
+
+\## Temporadas
+
+
+
+✅ Clasificación a copas
+
+
+
+✅ Ascensos
+
+
+
+✅ Descensos
+
+
+
+✅ Movimientos de categoría
+
+
+
+\---
+
+
+
+\## Copas
+
+
+
+✅ Grupos
+
+
+
+✅ Clasificaciones
+
+
+
+✅ Playoffs
+
+
+
+✅ Generación de llaves
+
+
+
+⚠️ Versión inicial
+
+
+
+\---
+
+
+
+\# Datos Actuales
 
 
 
@@ -204,7 +472,7 @@ ResumenParticipanteInstancia
 
 
 
-90
+\- \~90 participantes reales
 
 
 
@@ -220,55 +488,11 @@ ResumenParticipanteInstancia
 
 
 
-\## Temporada Activa
+\## Temporada
 
 
 
-2026
-
-
-
-\## Plantillas
-
-
-
-\- Liga Profesional
-
-\- Copa Repechaje
-
-\- Copa Argentina
-
-\- Supercopa
-
-
-
-\## Competencias
-
-
-
-\- Liga Profesional Clausura 2026
-
-\- Copa Repechaje 2026
-
-\- Copa Argentina 2026
-
-\- Supercopa 2026
-
-
-
-\## ParticipantesTemporada
-
-
-
-90 registros generados
-
-
-
-\## InstanciasCompetencia
-
-
-
-38 registros generados
+\- 2026
 
 
 
@@ -276,37 +500,15 @@ ResumenParticipanteInstancia
 
 
 
-32 registros
+\- 32 equipos
 
 
 
-Incluye:
+\## Partidos
 
 
 
-\- Estudiantes
-
-\- Estudiantes (RC)
-
-\- Gimnasia
-
-\- Gimnasia (Mza)
-
-
-
-\## Calendarios Reales
-
-
-
-\- Liga Profesional Clausura 2026 - Fecha 1
-
-
-
-\## Partidos Reales
-
-
-
-15 partidos cargados para Fecha 1
+\- Fecha 1 cargada
 
 
 
@@ -314,43 +516,7 @@ Incluye:
 
 
 
-15 pronósticos de prueba
-
-
-
-Participante:
-
-
-
-\- Pablo Camporini
-
-
-
-\## Resultados de Pronóstico
-
-
-
-Generados correctamente para los partidos evaluados.
-
-
-
-\## Resúmenes
-
-
-
-Generado correctamente:
-
-
-
-\- Pablo Camporini
-
-\- Fecha 1
-
-\- AF = 2
-
-\- AV = 0
-
-\- Puntos = 2
+\- Flujo validado
 
 
 
@@ -358,99 +524,49 @@ Generado correctamente:
 
 
 
-\# Validaciones Realizadas
+\# Arquitectura
 
 
 
-\## Equipos
+Separación estricta entre:
 
 
 
-Se decidió utilizar nombres oficiales como fuente única.
+\## Fútbol Real
 
 
 
-No se utilizarán alias internos.
+\- EquipoReal
 
+\- CalendarioReal
 
+\- PartidoReal
 
-Las boletas futuras deberán utilizar los mismos nombres almacenados en el sistema.
 
 
+Representa hechos objetivos.
 
-\## Resultados Reales
 
 
+\## Prode
 
-Los partidos almacenan:
 
 
+\- Pronostico
 
-\- goles\_local
+\- ResultadoPronostico
 
-\- goles\_visitante
+\- ResumenParticipanteInstancia
 
+\- Enfrentamiento
 
+\- Tablas
 
-El sistema deriva automáticamente:
+\- Clasificaciones
 
 
 
-\- L
-
-\- E
-
-\- V
-
-
-
-a partir de dichos resultados.
-
-
-
-\## Pronósticos
-
-
-
-Actualmente:
-
-
-
-\- L
-
-\- E
-
-\- V
-
-
-
-Diseño preparado para soportar futuras modalidades:
-
-
-
-\- resultado exacto
-
-\- variantes especiales por competencia
-
-
-
-\## AF / AV
-
-
-
-Validados mediante pruebas reales.
-
-
-
-Resultado esperado obtenido:
-
-
-
-AF = 2
-
-
-
-AV = 0
+Representa la lógica competitiva.
 
 
 
@@ -458,33 +574,23 @@ AV = 0
 
 
 
-\# Estado Arquitectónico
+\# Hallazgos de la Auditoría Julio 2026
 
 
 
-Dominio V1 vigente.
+Luego de revisar modelos, documentación y comandos se concluyó:
 
 
 
-No se detectaron cambios estructurales necesarios luego de analizar:
+\## El modelo está más avanzado que los procesos
 
 
 
-\- Liga Profesional Clausura
-
-\- Copa Repechaje
-
-\- Copa Argentina
-
-\- Copa Libertadores
-
-\- Copa Sudamericana
-
-\- Supercopa
+La mayoría de los modelos son reutilizables y suficientemente flexibles.
 
 
 
-La arquitectura sigue considerándose válida.
+La principal deuda técnica NO se encuentra actualmente en los modelos.
 
 
 
@@ -492,15 +598,79 @@ La arquitectura sigue considerándose válida.
 
 
 
-\# Próxima Fase
+\## CompetenciaConfig es la pieza central
 
 
 
-\## Implementación
+Ya existen configuraciones para:
 
 
 
-Enfrentamiento
+\- cantidad\_participantes
+
+\- cantidad\_zonas
+
+\- clasificados
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+\- tiene\_playoff
+
+\- tiene\_penales
+
+
+
+Sin embargo muchos procesos todavía utilizan valores hardcodeados.
+
+
+
+\---
+
+
+
+\## Deuda Técnica Principal
+
+
+
+Los comandos aún contienen reglas fijas para:
+
+
+
+\- cantidad de grupos
+
+\- cantidad de clasificados
+
+\- cantidad de ascensos
+
+\- cantidad de descensos
+
+\- clasificación a copas
+
+\- estructura de playoffs
+
+\- generación de instancias
+
+
+
+La próxima etapa consiste en reemplazar dichos valores por lectura desde CompetenciaConfig.
+
+
+
+\---
+
+
+
+\# Próxima Etapa
+
+
+
+\## Prioridad 1
+
+
+
+Refactor CompetenciaConfig
 
 
 
@@ -508,21 +678,19 @@ Objetivo:
 
 
 
-Representar partidos entre participantes y calcular:
+Eliminar hardcodeos de los procesos.
 
 
 
-\- ganador
+Archivos prioritarios:
 
-\- perdedor
 
-\- empate
 
-\- diferencias de AF
+\- generar\_grupos\_copas.py
 
-\- diferencias de AV
+\- calcular\_clasificaciones\_grupo.py
 
-\- reglas de desempate
+\- calcular\_movimientos\_categoria.py
 
 
 
@@ -530,43 +698,71 @@ Representar partidos entre participantes y calcular:
 
 
 
-\# Fases Pendientes
+\## Prioridad 2
 
 
 
-\## Fase Competitiva
+Refactor generación de instancias
 
 
 
-\- Enfrentamiento
+Archivo:
 
 
 
-\## Fase Ranking
+\- generar\_instancias\_2026.py
 
 
 
-\- RankingTemporada
-
-\- ResultadoCompetencia
-
-\- ReglaClasificacion
+Objetivo:
 
 
 
-\## Fase Deportiva
+Reducir dependencia de estructuras fijas por competencia.
 
 
 
-\- Ascensos
-
-\- Descensos
-
-\- Clasificaciones
+\---
 
 
 
-\## Fase Frontend
+\## Prioridad 3
+
+
+
+Motor de playoffs configurable
+
+
+
+Objetivo:
+
+
+
+Generar rondas dinámicamente según configuración de la competencia.
+
+
+
+\---
+
+
+
+\# Frontend
+
+
+
+Todavía NO es prioridad inmediata.
+
+
+
+La prioridad actual continúa siendo:
+
+
+
+Backend configurable.
+
+
+
+Una vez completada la eliminación de hardcodeos se evaluará iniciar:
 
 
 
@@ -574,145 +770,13 @@ Representar partidos entre participantes y calcular:
 
 \- Portal Participante
 
-\- Boletas online
+\- Carga de boletas
 
-\- Visualización de tablas
+\- Tablas
 
-\- Historiales
+\- Resultados
 
-
-
-\## Fase Integraciones
-
-
-
-\- API de fútbol
-
-\- Importación automática de fixtures
-
-\- Actualización automática de resultados
-
-
-
-\---
-
-
-
-\# Requisitos Funcionales Descubiertos
-
-
-
-\## Bloqueo de Boletas
-
-
-
-La edición deberá bloquearse automáticamente antes del inicio de los partidos.
-
-
-
-Objetivo inicial:
-
-
-
-1 hora antes del primer partido válido de la instancia.
-
-
-
-\## Visibilidad de Boletas
-
-
-
-Antes del cierre:
-
-
-
-\- cada participante sólo ve su propia boleta
-
-
-
-Después del cierre:
-
-
-
-\- todos los participantes pueden visualizar todas las boletas
-
-
-
-\## Partidos Decisivos
-
-
-
-El sistema deberá identificar y resaltar:
-
-
-
-\- partidos donde dos participantes realizaron pronósticos diferentes
-
-
-
-\## Carga Administrativa
-
-
-
-Los administradores deberán poder:
-
-
-
-\- crear boletas
-
-\- modificar boletas
-
-\- cargar boletas para terceros
-
-
-
-\## Auditoría
-
-
-
-Registrar:
-
-
-
-\- propietario de la boleta
-
-\- usuario que realizó la carga
-
-\- fecha de modificación
-
-
-
-\## Escudos
-
-
-
-Los equipos deberán soportar escudos oficiales.
-
-
-
-Preferencia:
-
-
-
-\- almacenamiento local
-
-\- no depender permanentemente de una API externa
-
-
-
-\## Zona Horaria
-
-
-
-Pendiente configurar:
-
-
-
-America/Argentina/Buenos\_Aires
-
-
-
-para evitar diferencias entre horario del servidor y horario visible para usuarios.
+\- Estadísticas
 
 
 
@@ -724,9 +788,29 @@ para evitar diferencias entre horario del servidor y horario visible para usuari
 
 
 
-El proyecto dejó la etapa de diseño conceptual.
+Modelo de Dominio:
+
+90%
 
 
 
-La aplicación ya permite cargar y evaluar una fecha completa de Prode utilizando datos reales y modelos persistidos en base de datos.
+Backend Funcional:
+
+90%
+
+
+
+Backend Configurable:
+
+60%
+
+
+
+Frontend:
+
+0%
+
+
+
+El proyecto ya superó la etapa de prueba conceptual y actualmente se encuentra en proceso de transformación hacia un motor configurable de competiciones.
 

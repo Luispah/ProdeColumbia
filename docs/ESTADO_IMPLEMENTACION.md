@@ -1,28 +1,10 @@
-\# ESTADO IMPLEMENTACION
+\# ESTADO\_IMPLEMENTACION
 
 
 
-\## Resumen
+Fecha de actualización:
 
-
-
-Estado general del proyecto:
-
-
-
-🔄 EN DESARROLLO ACTIVO
-
-
-
-Dominio V1:
-
-
-
-✅ Congelado
-
-
-
-✅ Validado
+2026-07-27
 
 
 
@@ -30,11 +12,49 @@ Dominio V1:
 
 
 
-\# Implementado
+\# Estado General
 
 
 
-\## Infraestructura
+Proyecto:
+
+ProdeColumbia
+
+
+
+Estado actual:
+
+
+
+✅ Backend funcional
+
+
+
+✅ Dominio principal implementado
+
+
+
+✅ Flujo competitivo completo validado
+
+
+
+🔄 Configurabilidad en proceso de consolidación
+
+
+
+⏳ Frontend pendiente
+
+
+
+\---
+
+
+
+\# Infraestructura
+
+
+
+\## Implementado
 
 
 
@@ -62,7 +82,11 @@ Dominio V1:
 
 
 
-\## Personas
+\# Personas
+
+
+
+\## Implementado
 
 
 
@@ -82,11 +106,35 @@ Dominio V1:
 
 
 
+\## Validado
+
+
+
+✅ Participantes reales cargados
+
+
+
+✅ Categorías A/B/C creadas
+
+
+
+✅ Temporada 2026 creada
+
+
+
+✅ ParticipanteTemporada generado
+
+
+
 \---
 
 
 
-\## Competiciones
+\# Competiciones
+
+
+
+\## Implementado
 
 
 
@@ -110,11 +158,43 @@ Dominio V1:
 
 
 
+\## Validado
+
+
+
+✅ Liga Profesional Clausura 2026
+
+
+
+✅ Copa Libertadores 2026
+
+
+
+✅ Copa Sudamericana 2026
+
+
+
+✅ Copa Repechaje 2026
+
+
+
+✅ Copa Argentina 2026
+
+
+
+✅ Supercopa 2026
+
+
+
 \---
 
 
 
-\## Fútbol Real
+\# Fútbol Real
+
+
+
+\## Implementado
 
 
 
@@ -134,11 +214,35 @@ Dominio V1:
 
 
 
+\## Validado
+
+
+
+✅ Equipos reales cargados
+
+
+
+✅ Calendario creado
+
+
+
+✅ Partidos reales cargados
+
+
+
+✅ InstanciaPartido vinculada
+
+
+
 \---
 
 
 
-\## Pronósticos
+\# Pronósticos
+
+
+
+\## Implementado
 
 
 
@@ -154,63 +258,31 @@ Dominio V1:
 
 
 
-\---
+\## Validado
 
 
 
-\# Implementado y Validado
+✅ Generación masiva
 
 
 
-\## Participantes
+✅ Resultados derivados automáticamente
 
 
 
-✅ 90 participantes cargados
+✅ AF
 
 
 
-✅ Temporada 2026 creada
+✅ AV
 
 
 
-✅ Categorías A/B/C creadas
+✅ Puntos
 
 
 
-✅ ParticipanteTemporada generado
-
-
-
-\---
-
-
-
-\## Competiciones
-
-
-
-✅ Liga Profesional Clausura 2026
-
-
-
-✅ Copa Repechaje 2026
-
-
-
-✅ Copa Argentina 2026
-
-
-
-✅ Supercopa 2026
-
-
-
-✅ CompetenciaConfig creada
-
-
-
-✅ Instancias generadas automáticamente
+✅ Resúmenes
 
 
 
@@ -218,59 +290,43 @@ Dominio V1:
 
 
 
-\## Fútbol Real
+\# Competición
 
 
 
-✅ 32 equipos cargados
+\## Implementado
 
 
 
-✅ Calendario Fecha 1 creado
+✅ Enfrentamiento
 
 
 
-✅ 15 partidos cargados
+\## Validado
 
 
 
-✅ InstanciaPartido creada para Fecha 1
+✅ Generación de enfrentamientos
 
 
 
-\---
+✅ Resolución
 
 
 
-\## Pronósticos
+✅ Victorias
 
 
 
-✅ Boleta de prueba generada
+✅ Empates
 
 
 
-✅ 15 pronósticos creados
+✅ Derrotas
 
 
 
-✅ Resultados reales cargados
-
-
-
-✅ ResultadoPronostico generado
-
-
-
-✅ AF validado
-
-
-
-✅ AV validado
-
-
-
-✅ ResumenParticipanteInstancia validado
+✅ Asignación de puntos
 
 
 
@@ -278,31 +334,531 @@ Dominio V1:
 
 
 
-\# En Desarrollo
+\# Tablas
 
 
 
-\## Fase 4
+\## Implementado
 
 
 
-🔄 Enfrentamiento
+✅ TablaInstancia
 
 
 
-Objetivos:
+✅ TablaCompetencia
 
 
 
-\- vincular participantes
+✅ TablaTemporada
 
-\- determinar ganador
 
-\- determinar empate
 
-\- calcular DA
+✅ Actualización de posiciones
 
-\- aplicar criterios de desempate
+
+
+\## Validado
+
+
+
+✅ Acumulación por instancia
+
+
+
+✅ Acumulación por competencia
+
+
+
+✅ Acumulación por temporada
+
+
+
+✅ Ranking por puntos
+
+
+
+\---
+
+
+
+\# Resultados Deportivos
+
+
+
+\## Implementado
+
+
+
+✅ ResultadoTemporada
+
+
+
+✅ MovimientoCategoria
+
+
+
+\## Validado
+
+
+
+✅ Clasificación a copas
+
+
+
+✅ Ascensos
+
+
+
+✅ Descensos
+
+
+
+✅ Movimientos de categoría
+
+
+
+\---
+
+
+
+\# Copas
+
+
+
+\## Implementado
+
+
+
+✅ GrupoCompetencia
+
+
+
+✅ ParticipacionGrupo
+
+
+
+✅ TablaGrupo
+
+
+
+✅ ClasificacionGrupo
+
+
+
+✅ LlaveCompetencia
+
+
+
+\## Validado
+
+
+
+✅ Generación de grupos
+
+
+
+✅ Participación en grupos
+
+
+
+✅ Clasificación de grupos
+
+
+
+✅ Playoffs
+
+
+
+✅ Generación de llaves
+
+
+
+✅ Resolución de llaves
+
+
+
+✅ Generación de rondas posteriores
+
+
+
+\---
+
+
+
+\# Flujo Implementado
+
+
+
+Actualmente el sistema puede ejecutar:
+
+
+
+Participante
+
+
+
+↓
+
+
+
+ParticipanteTemporada
+
+
+
+↓
+
+
+
+Pronostico
+
+
+
+↓
+
+
+
+ResultadoPronostico
+
+
+
+↓
+
+
+
+ResumenParticipanteInstancia
+
+
+
+↓
+
+
+
+Enfrentamiento
+
+
+
+↓
+
+
+
+TablaInstancia
+
+
+
+↓
+
+
+
+TablaCompetencia
+
+
+
+↓
+
+
+
+TablaTemporada
+
+
+
+↓
+
+
+
+ResultadoTemporada
+
+
+
+↓
+
+
+
+MovimientoCategoria
+
+
+
+\---
+
+
+
+\# Flujo Copas
+
+
+
+ParticipacionCompetencia
+
+
+
+↓
+
+
+
+GrupoCompetencia
+
+
+
+↓
+
+
+
+ParticipacionGrupo
+
+
+
+↓
+
+
+
+TablaGrupo
+
+
+
+↓
+
+
+
+ClasificacionGrupo
+
+
+
+↓
+
+
+
+LlaveCompetencia
+
+
+
+↓
+
+
+
+Campeón
+
+
+
+\---
+
+
+
+\# Hallazgos de Auditoría
+
+
+
+Julio 2026
+
+
+
+Se realizó una revisión completa de:
+
+
+
+\- modelos
+
+\- comandos
+
+\- documentación
+
+\- flujos
+
+
+
+Conclusión:
+
+
+
+\## El modelo está avanzado
+
+
+
+Los modelos actuales cubren correctamente la mayoría de los casos de uso previstos.
+
+
+
+No se identificaron refactors urgentes del modelo.
+
+
+
+\---
+
+
+
+\## La deuda técnica principal está en los comandos
+
+
+
+Muchos procesos continúan utilizando valores hardcodeados.
+
+
+
+Ejemplos detectados:
+
+
+
+\- cantidad de grupos
+
+\- cantidad de clasificados
+
+\- cantidad de ascensos
+
+\- cantidad de descensos
+
+\- clasificaciones a copas
+
+\- estructura de instancias
+
+\- estructura de playoffs
+
+
+
+\---
+
+
+
+\## CompetenciaConfig debe convertirse en la fuente de verdad
+
+
+
+Ya existen campos para:
+
+
+
+\- cantidad\_participantes
+
+\- cantidad\_zonas
+
+\- clasificados
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+\- tiene\_playoff
+
+\- tiene\_penales
+
+
+
+Actualmente no todos los procesos utilizan esos valores.
+
+
+
+\---
+
+
+
+\# Trabajo en Curso
+
+
+
+\## Refactor CompetenciaConfig
+
+
+
+Estado:
+
+
+
+🔄 EN CURSO
+
+
+
+Objetivo:
+
+
+
+Eliminar reglas hardcodeadas de los procesos.
+
+
+
+\---
+
+
+
+\# Próximas Tareas
+
+
+
+\## Prioridad Alta
+
+
+
+\### generar\_grupos\_copas.py
+
+
+
+Migrar a:
+
+
+
+\- cantidad\_zonas
+
+
+
+\---
+
+
+
+\### calcular\_clasificaciones\_grupo.py
+
+
+
+Migrar a:
+
+
+
+\- clasificados
+
+
+
+\---
+
+
+
+\### calcular\_movimientos\_categoria.py
+
+
+
+Migrar a:
+
+
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+
+
+\---
+
+
+
+\## Prioridad Media
+
+
+
+\### generar\_instancias\_2026.py
+
+
+
+Reducir dependencia de definiciones fijas por competencia.
+
+
+
+\---
+
+
+
+\## Prioridad Media
+
+
+
+\### Motor de playoffs configurable
+
+
+
+Generar rondas automáticamente según configuración.
 
 
 
@@ -326,6 +882,16 @@ Objetivos:
 
 
 
+Necesarios para:
+
+
+
+\- Supercopa
+
+\- competiciones por equipos
+
+
+
 \---
 
 
@@ -334,39 +900,19 @@ Objetivos:
 
 
 
-⏳ RankingTemporada
+⏳ Hall of Fame
 
 
 
-⏳ ReglaClasificacion
+⏳ Rivalidades
 
 
 
-⏳ ResultadoCompetencia
+⏳ Estadísticas históricas
 
 
 
-\---
-
-
-
-\## Clasificaciones
-
-
-
-⏳ Ascensos
-
-
-
-⏳ Descensos
-
-
-
-⏳ Clasificación a copas
-
-
-
-⏳ Clasificaciones automáticas
+⏳ Récords
 
 
 
@@ -374,47 +920,31 @@ Objetivos:
 
 
 
-\## Frontend
+\## Funcionalidades Operativas
 
 
 
-⏳ Portal Administrador
+⏳ Bloqueo de boletas
 
 
 
-⏳ Portal Participante
+⏳ Visibilidad post cierre
 
 
 
-⏳ Gestión de boletas
+⏳ Auditoría completa
 
 
 
-⏳ Estadísticas
+⏳ Partidos decisivos
 
 
 
-⏳ Historiales
+⏳ Zona horaria Argentina
 
 
 
-\---
-
-
-
-\## Integraciones
-
-
-
-⏳ Importación automática fixture
-
-
-
-⏳ Importación automática resultados
-
-
-
-⏳ APIs externas
+⏳ Escudos oficiales
 
 
 
@@ -422,35 +952,27 @@ Objetivos:
 
 
 
-\# Próximo Objetivo
+\# Frontend
 
 
 
-Implementar:
+Estado:
 
 
 
-Enfrentamiento
+⏳ PENDIENTE
 
 
 
-Será la primera entidad que represente directamente:
+Se comenzará una vez estabilizado:
 
 
 
-Participante
+\- CompetenciaConfig
 
+\- generación dinámica de instancias
 
-
-vs
-
-
-
-Participante
-
-
-
-y constituirá el núcleo competitivo del sistema.
+\- playoffs dinámicos
 
 
 
@@ -458,29 +980,49 @@ y constituirá el núcleo competitivo del sistema.
 
 
 
-\# Última Actualización
+\# Estado Estimado
 
 
 
-2026-07-21
+Modelo de Dominio:
+
+90%
 
 
 
-Estado validado mediante pruebas reales sobre:
+Backend Funcional:
+
+90%
 
 
 
-\- Fecha 1 Clausura 2026
+Backend Configurable:
 
-\- Partidos reales
+60%
 
-\- Pronósticos
 
-\- Resultados
 
-\- AF
+Frontend:
 
-\- AV
+0%
 
-\- Resúmenes
+
+
+\---
+
+
+
+\# Situación Actual
+
+
+
+El proyecto ya dejó atrás la etapa de prueba conceptual.
+
+
+
+La prioridad actual ya no es agregar modelos.
+
+
+
+La prioridad actual es transformar un backend funcional en un backend completamente configurable.
 

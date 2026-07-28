@@ -1,192 +1,127 @@
-\# MODELO DOMINIO V1
+# MODELO_DOMINIO
 
+Fecha:
+2026-07-27
 
+---
 
-\---
+# Visión General
 
+ProdeColumbia modela un ecosistema competitivo completo.
 
+No modela únicamente pronósticos.
 
-\# Visión General
+Modela:
 
+- participantes
+- temporadas
+- categorías
+- competiciones
+- fútbol real
+- pronósticos
+- enfrentamientos
+- tablas
+- clasificaciones
+- ascensos
+- descensos
+- copas
+- playoffs
+- históricos
 
+---
 
-El dominio modela un sistema de Prode capaz de:
+# Principio Fundamental
 
+El proyecto separa estrictamente:
 
+## Fútbol Real
 
-\- administrar temporadas
+Representa eventos objetivos.
 
-\- administrar participantes
+Ejemplos:
 
-\- administrar competiciones
+- EquipoReal
+- CalendarioReal
+- PartidoReal
 
-\- administrar pronósticos
+---
 
-\- calcular resultados
+## Competencia Prode
 
-\- generar tablas y clasificaciones
+Representa la lógica competitiva.
 
-\- soportar múltiples formatos de competición
+Ejemplos:
 
+- Pronostico
+- ResultadoPronostico
+- ResumenParticipanteInstancia
+- Enfrentamiento
+- Tablas
+- Clasificaciones
 
+---
 
-El modelo separa explícitamente:
+# Personas
 
-
-
-\- personas
-
-\- competiciones
-
-\- fútbol real
-
-\- pronósticos
-
-\- resultados
-
-\- históricos
-
-
-
-\---
-
-
-
-\# Personas
-
-
-
-\## Participante
-
-
+## Participante
 
 Representa una persona.
 
-
-
 Características:
 
+- nunca se elimina
+- mantiene histórico completo
+- puede participar en múltiples temporadas
 
+---
 
-\- nunca se elimina
+## Categoria
 
-\- mantiene identidad histórica
-
-\- puede participar en múltiples temporadas
-
-
-
-Ejemplos:
-
-
-
-\- Pablo Camporini
-
-\- Alejandro Caramia
-
-
-
-\---
-
-
-
-\## Categoria
-
-
-
-Representa una división.
-
-
+Representa una división competitiva.
 
 Ejemplos:
 
-
-
-\- A
-
-\- B
-
-\- C
-
-
+- A
+- B
+- C
 
 Responsabilidades:
 
+- ascensos
+- descensos
+- organización deportiva
 
+---
 
-\- ascensos
-
-\- descensos
-
-\- organización de participantes
-
-
-
-\---
-
-
-
-\## Temporada
-
-
+## Temporada
 
 Representa un ciclo anual.
 
-
-
 Ejemplos:
 
+- 2026
+- 2027
+- 2028
 
+---
 
-\- 2026
+## ParticipanteTemporada
 
-\- 2027
+Representa la participación de un participante en una temporada específica.
 
-\- 2028
+Permite modelar:
 
-
-
-\---
-
-
-
-\## ParticipanteTemporada
-
-
-
-Representa la participación de un participante dentro de una temporada específica.
-
-
-
-Resuelve:
-
-
-
-\- ascensos
-
-\- descensos
-
-\- nuevos participantes
-
-\- participantes reincorporados
-
-\- histórico por temporada
-
-
+- ascensos
+- descensos
+- reincorporaciones
+- nuevos jugadores
+- histórico anual
 
 Ejemplo:
 
-
-
 ```text
-
-Pablo Camporini
-
+Participante
 ↓
-
-Temporada 2026
-
+Temporada
 ↓
-
-Categoría A
-
+Categoría

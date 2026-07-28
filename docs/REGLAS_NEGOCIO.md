@@ -1,12 +1,66 @@
-\# REGLAS NEGOCIO
+\# REGLAS\_NEGOCIO
 
 
 
-\## Participantes
+Fecha:
+
+2026-07-27
 
 
 
-Los participantes nunca se eliminan.
+\---
+
+
+
+\# Principio General
+
+
+
+ProdeColumbia no es únicamente un sistema de pronósticos.
+
+
+
+Es un sistema de administración competitiva.
+
+
+
+Debe modelar:
+
+
+
+\- participantes
+
+\- temporadas
+
+\- categorías
+
+\- competiciones
+
+\- pronósticos
+
+\- resultados
+
+\- enfrentamientos
+
+\- clasificaciones
+
+\- ascensos
+
+\- descensos
+
+\- históricos
+
+
+
+\---
+
+
+
+\# Participantes
+
+
+
+Los participantes nunca se eliminan físicamente del sistema.
 
 
 
@@ -16,25 +70,15 @@ Pueden:
 
 \- retirarse
 
-\- volver años después
+\- reincorporarse
 
 \- cambiar de categoría
 
-
-
-\---
-
-
-
-\## Categorías
+\- permanecer inactivos durante varias temporadas
 
 
 
-Configurables.
-
-
-
-No hardcodeadas.
+La información histórica debe conservarse permanentemente.
 
 
 
@@ -42,15 +86,31 @@ No hardcodeadas.
 
 
 
-\## Temporadas
+\# Categorías
 
 
 
-Las temporadas son independientes.
+Las categorías son configurables.
 
 
 
-Cada participante posee una participación por temporada.
+No deben existir categorías hardcodeadas en el dominio.
+
+
+
+Ejemplos actuales:
+
+
+
+\- A
+
+\- B
+
+\- C
+
+
+
+La arquitectura debe permitir agregar o eliminar categorías futuras.
 
 
 
@@ -58,15 +118,43 @@ Cada participante posee una participación por temporada.
 
 
 
-\## Creación de Temporadas
+\# Temporadas
 
 
 
-El sistema deberá generar propuestas automáticas.
+Las temporadas son independientes entre sí.
 
 
 
-Incluyendo:
+Cada participante genera una participación específica por temporada mediante:
+
+
+
+```text
+
+ParticipanteTemporada
+
+```
+
+
+
+La categoría pertenece a la temporada y no al participante.
+
+
+
+\---
+
+
+
+\# ParticipanteTemporada
+
+
+
+Es la entidad oficial para representar la situación deportiva de una persona en una temporada específica.
+
+
+
+Permite modelar:
 
 
 
@@ -74,27 +162,11 @@ Incluyendo:
 
 \- descensos
 
-\- participantes activos
+\- nuevos participantes
 
+\- reincorporaciones
 
-
-La propuesta podrá modificarse manualmente.
-
-
-
-\---
-
-
-
-\## Competiciones
-
-
-
-Se crean desde PlantillaCompetencia.
-
-
-
-Toda configuración debe poder modificarse desde interfaz gráfica.
+\- históricos
 
 
 
@@ -102,39 +174,31 @@ Toda configuración debe poder modificarse desde interfaz gráfica.
 
 
 
-\## AF / AV
+\# Competiciones
 
 
 
-Se calculan a partir de ResultadoPronostico.
+Toda competencia debe crearse desde:
 
 
 
-Se almacenan en ResumenParticipanteInstancia.
+```text
+
+PlantillaCompetencia
+
+```
 
 
 
-No deben recalcularse permanentemente.
+y configurarse mediante:
 
 
 
-\---
+```text
 
+CompetenciaConfig
 
-
-\## DA
-
-
-
-No pertenece al participante.
-
-
-
-No pertenece al resumen individual.
-
-
-
-DA pertenece al enfrentamiento entre dos participantes y se calcula comparando sus resultados.
+```
 
 
 
@@ -142,11 +206,35 @@ DA pertenece al enfrentamiento entre dos participantes y se calcula comparando s
 
 
 
-\## Históricos
+\# CompetenciaConfig
 
 
 
-Los resultados finales de todas las competiciones se almacenarán.
+CompetenciaConfig es la fuente oficial de configuración del sistema.
+
+
+
+Toda regla configurable debe derivarse de esta entidad antes de crear nuevas estructuras o hardcodear lógica.
+
+
+
+Ejemplos:
+
+
+
+\- cantidad\_participantes
+
+\- cantidad\_zonas
+
+\- clasificados
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+\- tiene\_playoff
+
+\- tiene\_penales
 
 
 
@@ -154,29 +242,103 @@ Los resultados finales de todas las competiciones se almacenarán.
 
 
 
-\## Partidos Reales
+\# Regla Arquitectónica
 
 
 
-Todas las competiciones utilizan partidos reales.
+Antes de crear:
 
 
 
-Una competición puede:
+\- un nuevo modelo
+
+\- un nuevo campo
+
+\- una nueva lógica específica
 
 
 
-\- utilizar todos los partidos
-
-\- utilizar algunos
-
-\- excluir partidos suspendidos
-
-\- definir partidos de penales
+debe verificarse si el requerimiento puede resolverse mediante CompetenciaConfig.
 
 
 
-Los resultados reales se almacenan mediante:
+\---
+
+
+
+\# Persistencia de Cálculos
+
+
+
+Los cálculos importantes deben almacenarse.
+
+
+
+No deben recalcularse constantemente.
+
+
+
+Ejemplos:
+
+
+
+\- ResultadoPronostico
+
+\- ResumenParticipanteInstancia
+
+\- TablaInstancia
+
+\- TablaCompetencia
+
+\- TablaTemporada
+
+\- ResultadoTemporada
+
+\- MovimientoCategoria
+
+
+
+\---
+
+
+
+\# Pronósticos
+
+
+
+Actualmente los participantes pronostican:
+
+
+
+\- Local
+
+\- Empate
+
+\- Visitante
+
+
+
+El diseño debe permanecer preparado para futuras extensiones:
+
+
+
+\- resultado exacto
+
+\- modalidades especiales
+
+\- reglas alternativas
+
+
+
+\---
+
+
+
+\# Resultados Reales
+
+
+
+Los resultados oficiales se almacenan mediante:
 
 
 
@@ -186,7 +348,7 @@ Los resultados reales se almacenan mediante:
 
 
 
-A partir de dichos valores el sistema deriva:
+A partir de dichos valores el sistema puede derivar:
 
 
 
@@ -206,51 +368,39 @@ cuando sea necesario.
 
 
 
-\## Equipos Reales
+\# AF y AV
 
 
 
-Los equipos se almacenan utilizando nombres oficiales.
+AF y AV se calculan a partir de:
 
 
 
-No se utilizarán alias internos como fuente principal.
+```text
+
+ResultadoPronostico
+
+```
 
 
 
-Las boletas deberán utilizar los mismos nombres definidos en el sistema.
+Se almacenan en:
 
 
 
-\---
+```text
+
+ResumenParticipanteInstancia
+
+```
 
 
 
-\## Pronósticos
+AF y AV forman parte de la información persistida.
 
 
 
-Actualmente los participantes pronostican:
-
-
-
-\- Local
-
-\- Empate
-
-\- Visitante
-
-
-
-El modelo deberá permanecer preparado para soportar futuras modalidades:
-
-
-
-\- resultado exacto
-
-\- competiciones especiales
-
-\- reglas alternativas
+No deben calcularse dinámicamente en cada consulta.
 
 
 
@@ -258,11 +408,417 @@ El modelo deberá permanecer preparado para soportar futuras modalidades:
 
 
 
-\## Cierre de Boletas
+\# DA
 
 
 
-Las boletas podrán modificarse únicamente hasta la hora de cierre.
+DA no pertenece al participante.
+
+
+
+DA no pertenece al resumen individual.
+
+
+
+DA pertenece a la comparación entre participantes.
+
+
+
+Por lo tanto su lugar natural es:
+
+
+
+```text
+
+Enfrentamiento
+
+```
+
+
+
+\---
+
+
+
+\# Enfrentamiento
+
+
+
+Es la entidad competitiva principal del dominio.
+
+
+
+Toda competencia termina expresándose mediante enfrentamientos entre participantes.
+
+
+
+Debe permitir determinar:
+
+
+
+\- ganador
+
+\- perdedor
+
+\- empate
+
+\- puntos
+
+\- comparaciones deportivas
+
+
+
+\---
+
+
+
+\# Tablas
+
+
+
+Existen tres niveles de acumulación:
+
+
+
+\## TablaInstancia
+
+
+
+Acumula resultados de una instancia.
+
+
+
+\---
+
+
+
+\## TablaCompetencia
+
+
+
+Acumula resultados de una competencia.
+
+
+
+\---
+
+
+
+\## TablaTemporada
+
+
+
+Acumula resultados de toda la temporada.
+
+
+
+Es la fuente principal para:
+
+
+
+\- clasificación a copas
+
+\- ascensos
+
+\- descensos
+
+
+
+\---
+
+
+
+\# ResultadoTemporada
+
+
+
+Representa la consecuencia deportiva final de una temporada.
+
+
+
+Ejemplos:
+
+
+
+\- Libertadores
+
+\- Sudamericana
+
+\- Ascenso
+
+\- Descenso
+
+\- Repechaje
+
+
+
+\---
+
+
+
+\# MovimientoCategoria
+
+
+
+Representa el movimiento deportivo entre categorías.
+
+
+
+Posibles valores:
+
+
+
+\- Ascenso
+
+\- Descenso
+
+\- Mantiene
+
+
+
+\---
+
+
+
+\# Copas
+
+
+
+Las copas pueden utilizar:
+
+
+
+\- fase de grupos
+
+\- clasificación
+
+\- eliminación directa
+
+
+
+o cualquier combinación de ellas.
+
+
+
+No debe asumirse que todas las copas poseen la misma estructura.
+
+
+
+\---
+
+
+
+\# Grupos
+
+
+
+Los grupos representan una fase clasificatoria.
+
+
+
+Deben poder configurarse mediante:
+
+
+
+```text
+
+CompetenciaConfig.cantidad\_zonas
+
+```
+
+
+
+No deben depender de cantidades hardcodeadas.
+
+
+
+\---
+
+
+
+\# Clasificaciones
+
+
+
+La cantidad de clasificados debe obtenerse desde:
+
+
+
+```text
+
+CompetenciaConfig.clasificados
+
+```
+
+
+
+No debe depender de posiciones fijas programadas en código.
+
+
+
+\---
+
+
+
+\# Playoffs
+
+
+
+Los playoffs representan fases eliminatorias.
+
+
+
+La dirección actual del proyecto es evolucionar hacia un sistema totalmente configurable.
+
+
+
+El objetivo futuro es soportar:
+
+
+
+\- Supercopa
+
+\- Repechaje
+
+\- Libertadores
+
+\- Sudamericana
+
+\- Copa Argentina
+
+
+
+sin modificar código para cada competencia.
+
+
+
+\---
+
+
+
+\# Ascensos y Descensos
+
+
+
+La cantidad de ascensos y descensos debe obtenerse desde configuración.
+
+
+
+No debe depender de valores fijos definidos en comandos.
+
+
+
+\---
+
+
+
+\# Fútbol Real
+
+
+
+Todas las competiciones utilizan partidos reales.
+
+
+
+Una competencia puede:
+
+
+
+\- utilizar todos los partidos
+
+\- utilizar algunos partidos
+
+\- excluir partidos suspendidos
+
+\- utilizar partidos especiales
+
+\- definir instancias con penales
+
+
+
+\---
+
+
+
+\# Equipos Reales
+
+
+
+Los equipos deben utilizar nombres oficiales.
+
+
+
+No deben utilizarse alias como fuente principal.
+
+
+
+Las boletas deben utilizar exactamente los nombres definidos en la base de datos.
+
+
+
+\---
+
+
+
+\# Supercopa
+
+
+
+La Supercopa utilizará equipos temporales.
+
+
+
+No necesariamente participantes individuales.
+
+
+
+Por este motivo permanecen pendientes:
+
+
+
+\- EquipoTemporal
+
+\- MiembroEquipoTemporal
+
+
+
+\---
+
+
+
+\# Históricos
+
+
+
+Los resultados finales deben conservarse.
+
+
+
+El proyecto deberá permitir construir:
+
+
+
+\- Hall of Fame
+
+\- campeones históricos
+
+\- rivalidades
+
+\- récords
+
+\- estadísticas acumuladas
+
+
+
+\---
+
+
+
+\# Bloqueo de Boletas
+
+
+
+Las boletas sólo podrán modificarse antes de la hora de cierre.
 
 
 
@@ -270,19 +826,13 @@ Objetivo inicial:
 
 
 
-1 hora antes del inicio del primer partido válido de la instancia.
+```text
 
+1 hora antes del primer partido válido
 
+de la instancia
 
-Ejemplo:
-
-
-
-Primer partido = 20:00
-
-
-
-Cierre de carga = 19:00
+```
 
 
 
@@ -290,27 +840,7 @@ Cierre de carga = 19:00
 
 
 
-\## Bloqueo de Edición
-
-
-
-Una vez alcanzada la hora de cierre:
-
-
-
-\- no podrán modificarse pronósticos
-
-\- no podrán agregarse pronósticos nuevos
-
-\- la instancia quedará bloqueada
-
-
-
-\---
-
-
-
-\## Visibilidad de Boletas
+\# Visibilidad de Boletas
 
 
 
@@ -318,7 +848,7 @@ Antes del cierre:
 
 
 
-\- cada participante sólo puede visualizar su propia boleta
+\- cada participante sólo puede ver su propia boleta
 
 
 
@@ -326,7 +856,7 @@ Después del cierre:
 
 
 
-\- todos los participantes podrán visualizar todas las boletas
+\- todos los participantes pueden visualizar todas las boletas
 
 
 
@@ -334,15 +864,15 @@ Después del cierre:
 
 
 
-\## Partidos Decisivos
+\# Partidos Decisivos
 
 
 
-El sistema deberá identificar los partidos donde dos participantes realizaron pronósticos diferentes.
+El sistema deberá identificar automáticamente partidos donde dos participantes realizaron pronósticos distintos.
 
 
 
-Estos partidos deberán destacarse visualmente porque son los únicos que pueden generar diferencias directas entre ambos participantes.
+Estos partidos son los únicos que pueden producir diferencias deportivas entre ambos participantes.
 
 
 
@@ -350,11 +880,11 @@ Estos partidos deberán destacarse visualmente porque son los únicos que pueden
 
 
 
-\## Carga Administrativa
+\# Carga Administrativa
 
 
 
-Los administradores deberán poder:
+Los administradores deben poder:
 
 
 
@@ -362,11 +892,7 @@ Los administradores deberán poder:
 
 \- modificar boletas
 
-\- cargar pronósticos para terceros
-
-
-
-Pensado especialmente para participantes que no utilicen habitualmente sistemas informáticos.
+\- cargar boletas para terceros
 
 
 
@@ -374,11 +900,11 @@ Pensado especialmente para participantes que no utilicen habitualmente sistemas 
 
 
 
-\## Auditoría
+\# Auditoría
 
 
 
-Toda carga de pronósticos deberá permitir registrar:
+Toda carga deberá permitir registrar:
 
 
 
@@ -392,7 +918,7 @@ Toda carga de pronósticos deberá permitir registrar:
 
 
 
-El objetivo es garantizar trazabilidad total.
+El objetivo es garantizar trazabilidad completa.
 
 
 
@@ -400,59 +926,25 @@ El objetivo es garantizar trazabilidad total.
 
 
 
-\## Supercopa
+\# Escudos
 
 
 
-Utiliza equipos temporales.
+Los equipos deberán soportar:
 
 
 
-No utiliza participantes individuales directamente.
-
-
-
-\---
-
-
-
-\## Ranking Temporada
-
-
-
-Es la fuente oficial para:
-
-
-
-\- ascensos
-
-\- descensos
-
-\- clasificación a copas
-
-\- rankings históricos
-
-
-
-\---
-
-
-
-\## Escudos
-
-
-
-Los equipos deberán soportar escudos oficiales.
-
-
-
-Preferencia:
-
-
+\- escudos oficiales
 
 \- almacenamiento local
 
-\- independencia de APIs externas
+
+
+Prioridad:
+
+
+
+evitar dependencia permanente de APIs externas.
 
 
 
@@ -460,17 +952,83 @@ Preferencia:
 
 
 
-\## Zona Horaria
+\# Zona Horaria
 
 
 
-La aplicación deberá operar utilizando horario argentino.
+La aplicación deberá operar utilizando:
 
 
 
-Configuración pendiente:
-
-
+```text
 
 America/Argentina/Buenos\_Aires
+
+```
+
+
+
+como zona horaria oficial.
+
+
+
+\---
+
+
+
+\# Hallazgo de Auditoría Julio 2026
+
+
+
+Luego de analizar modelos, comandos y documentación se concluyó:
+
+
+
+\## El modelo es más maduro que los procesos
+
+
+
+La principal deuda técnica actual NO se encuentra en los modelos.
+
+
+
+La principal deuda técnica se encuentra en los comandos que aún utilizan valores hardcodeados.
+
+
+
+\---
+
+
+
+\# Prioridad Actual
+
+
+
+La prioridad inmediata del proyecto es:
+
+
+
+```text
+
+Transformar un backend funcional
+
+en un backend configurable
+
+```
+
+
+
+utilizando:
+
+
+
+```text
+
+CompetenciaConfig
+
+```
+
+
+
+como fuente principal de configuración del sistema.
 

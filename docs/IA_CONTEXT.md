@@ -10,27 +10,33 @@ ProdeColumbia.
 
 
 
-Aplicación web para administrar integralmente el Prode Columbia, actualmente gestionado mediante Excel.
+Aplicación web para administrar integralmente el Prode Columbia.
 
 
 
-No es un simple sistema de pronósticos deportivos.
+El sistema reemplaza progresivamente la operatoria histórica basada en Excel.
 
 
 
-Modela:
+NO es únicamente un sistema de pronósticos deportivos.
 
 
 
-\- Liga Profesional Apertura
+El objetivo es modelar completamente la estructura competitiva del Prode.
 
-\- Liga Profesional Clausura
 
-\- Copa Argentina
+
+Incluye:
+
+
+
+\- Liga Profesional
 
 \- Copa Libertadores
 
 \- Copa Sudamericana
+
+\- Copa Argentina
 
 \- Copa Repechaje
 
@@ -44,19 +50,15 @@ Modela:
 
 
 
-\## Objetivo
+\## Objetivo Principal
 
 
 
-Reemplazar progresivamente la operatoria manual basada en Excel por una plataforma web centralizada.
+Centralizar toda la operatoria del Prode Columbia en una única plataforma.
 
 
 
-El objetivo NO es únicamente registrar pronósticos.
-
-
-
-También debe gestionar:
+El sistema debe administrar:
 
 
 
@@ -66,19 +68,25 @@ También debe gestionar:
 
 \- temporadas
 
+\- competencias
+
+\- pronósticos
+
+\- resultados
+
+\- enfrentamientos
+
+\- tablas
+
+\- clasificaciones
+
 \- ascensos
 
 \- descensos
 
-\- clasificaciones
-
-\- enfrentamientos
-
 \- históricos
 
 \- estadísticas
-
-\- rankings
 
 
 
@@ -104,9 +112,9 @@ También debe gestionar:
 
 
 
-\- SQLite en desarrollo
+\- SQLite (desarrollo)
 
-\- PostgreSQL en producción (previsto)
+\- PostgreSQL (objetivo producción)
 
 
 
@@ -120,45 +128,37 @@ También debe gestionar:
 
 
 
-\### Repositorio
-
-
-
-\- ProdeColumbia
-
-
-
 \---
 
 
 
-\## Estado Actual
+\## Estado Actual Real
 
 
 
-Implementado:
+El proyecto ya superó ampliamente la fase inicial de pronósticos.
 
 
 
-\### Base
+Actualmente existe:
 
 
 
-\- Django operativo
-
-\- Admin operativo
-
-\- Importador Excel
-
-\- Participantes
-
-\- Categorías
-
-\- Temporadas
+\### Personas
 
 
 
-\### Competiciones
+\- Participante
+
+\- Categoria
+
+\- Temporada
+
+\- ParticipanteTemporada
+
+
+
+\### Competencias
 
 
 
@@ -200,171 +200,49 @@ Implementado:
 
 
 
-\---
+\### Competición
 
 
-
-\## Datos Existentes
-
-
-
-\### Participantes
-
-
-
-\- 90 participantes reales
-
-
-
-\### Categorías
-
-
-
-\- A
-
-\- B
-
-\- C
-
-
-
-\### Temporada
-
-
-
-\- 2026
-
-
-
-\### Competencias
-
-
-
-\- Liga Profesional Clausura 2026
-
-\- Copa Repechaje 2026
-
-\- Copa Argentina 2026
-
-\- Supercopa 2026
-
-
-
-\### Equipos Reales
-
-
-
-\- 32 equipos cargados
-
-
-
-\### Calendario
-
-
-
-\- Fecha 1 cargada
-
-
-
-\### Partidos
-
-
-
-\- 15 partidos reales cargados
-
-
-
-\### Pronósticos
-
-
-
-\- Primer flujo completo validado
-
-
-
-\### Resultados
-
-
-
-\- ResultadoPronostico validado
-
-
-
-\### Resúmenes
-
-
-
-\- ResumenParticipanteInstancia validado
-
-
-
-\---
-
-
-
-\## Principios Arquitectónicos
-
-
-
-Separar completamente:
-
-
-
-\### Fútbol Real
-
-
-
-de
-
-
-
-\### Prode
-
-
-
-\---
-
-
-
-\### Fútbol Real
-
-
-
-\- EquipoReal
-
-\- CalendarioReal
-
-\- PartidoReal
-
-
-
-Representa hechos objetivos.
-
-
-
-\---
-
-
-
-\### Prode
-
-
-
-\- Pronostico
-
-\- ResultadoPronostico
-
-\- ResumenParticipanteInstancia
 
 \- Enfrentamiento
 
-\- RankingTemporada
-
-\- ResultadoCompetencia
 
 
+\### Tablas
 
-Representa la lógica competitiva.
+
+
+\- TablaInstancia
+
+\- TablaCompetencia
+
+\- TablaTemporada
+
+
+
+\### Resultados Deportivos
+
+
+
+\- ResultadoTemporada
+
+\- MovimientoCategoria
+
+
+
+\### Copas
+
+
+
+\- GrupoCompetencia
+
+\- ParticipacionGrupo
+
+\- TablaGrupo
+
+\- ClasificacionGrupo
+
+\- LlaveCompetencia
 
 
 
@@ -372,7 +250,7 @@ Representa la lógica competitiva.
 
 
 
-\## Flujo Principal
+\## Flujo Principal Actual
 
 
 
@@ -393,22 +271,6 @@ ParticipanteTemporada
 
 
 Pronostico
-
-
-
-↓
-
-
-
-InstanciaPartido
-
-
-
-↓
-
-
-
-PartidoReal
 
 
 
@@ -440,7 +302,7 @@ Enfrentamiento
 
 
 
-RankingTemporada
+TablaInstancia
 
 
 
@@ -448,7 +310,31 @@ RankingTemporada
 
 
 
-ResultadoCompetencia
+TablaCompetencia
+
+
+
+↓
+
+
+
+TablaTemporada
+
+
+
+↓
+
+
+
+ResultadoTemporada
+
+
+
+↓
+
+
+
+MovimientoCategoria
 
 
 
@@ -456,11 +342,79 @@ ResultadoCompetencia
 
 
 
-\## Entidad Central
+\## Flujo de Copas
 
 
 
-La entidad principal del negocio es:
+Competencia
+
+
+
+↓
+
+
+
+ParticipacionCompetencia
+
+
+
+↓
+
+
+
+GrupoCompetencia
+
+
+
+↓
+
+
+
+ParticipacionGrupo
+
+
+
+↓
+
+
+
+TablaGrupo
+
+
+
+↓
+
+
+
+ClasificacionGrupo
+
+
+
+↓
+
+
+
+LlaveCompetencia
+
+
+
+↓
+
+
+
+Campeón
+
+
+
+\---
+
+
+
+\## Entidad Central del Negocio
+
+
+
+La entidad central continúa siendo:
 
 
 
@@ -468,19 +422,15 @@ La entidad principal del negocio es:
 
 
 
-No Partido.
+Los partidos reales representan hechos objetivos.
 
 
 
-No Pronóstico.
+Los enfrentamientos representan la competencia entre participantes.
 
 
 
-No Resultado.
-
-
-
-Toda la lógica competitiva converge finalmente en un enfrentamiento entre participantes.
+Toda la lógica deportiva termina convergiendo en un enfrentamiento.
 
 
 
@@ -488,41 +438,15 @@ Toda la lógica competitiva converge finalmente en un enfrentamiento entre parti
 
 
 
-\## Dominio V1
+\## Principios Arquitectónicos
 
 
 
-\### Personas
+\### Separación estricta
 
 
 
-\- Participante
-
-\- Categoria
-
-\- Temporada
-
-\- ParticipanteTemporada
-
-
-
-\### Competiciones
-
-
-
-\- PlantillaCompetencia
-
-\- Competencia
-
-\- CompetenciaConfig
-
-\- ParticipacionCompetencia
-
-\- InstanciaCompetencia
-
-
-
-\### Fútbol Real
+Fútbol Real:
 
 
 
@@ -532,11 +456,17 @@ Toda la lógica competitiva converge finalmente en un enfrentamiento entre parti
 
 \- PartidoReal
 
-\- InstanciaPartido
+
+
+Representa eventos objetivos.
 
 
 
-\### Pronósticos
+\---
+
+
+
+Prode:
 
 
 
@@ -546,43 +476,17 @@ Toda la lógica competitiva converge finalmente en un enfrentamiento entre parti
 
 \- ResumenParticipanteInstancia
 
-
-
-\### Núcleo Competitivo
-
-
-
 \- Enfrentamiento
 
+\- Tablas
 
+\- Clasificaciones
 
-\### Históricos
-
-
-
-\- RankingTemporada
-
-\- ReglaClasificacion
-
-\- ResultadoCompetencia
+\- Resultados
 
 
 
-\### Equipos Temporales
-
-
-
-\- EquipoTemporal
-
-\- MiembroEquipoTemporal
-
-
-
-\### Futuro
-
-
-
-\- Sorteo (V2)
+Representa la lógica competitiva.
 
 
 
@@ -590,75 +494,35 @@ Toda la lógica competitiva converge finalmente en un enfrentamiento entre parti
 
 
 
-\## Decisiones Congeladas
+\### Persistencia por etapas
 
 
 
-\### Participantes
+Los cálculos importantes se almacenan.
 
 
 
-\- Los participantes nunca se eliminan.
-
-\- La categoría vive en ParticipanteTemporada.
+No se recalculan constantemente.
 
 
 
-\### Competiciones
+Ejemplos:
 
 
 
-\- Las competiciones se crean desde PlantillaCompetencia.
+\- ResultadoPronostico
 
-\- Cada competencia posee CompetenciaConfig propia.
+\- ResumenParticipanteInstancia
 
-\- InstanciaCompetencia reemplaza conceptualmente a Fecha.
+\- TablaInstancia
 
+\- TablaCompetencia
 
+\- TablaTemporada
 
-\### Fútbol Real
+\- ResultadoTemporada
 
-
-
-\- Los partidos reales son independientes de las competiciones.
-
-\- InstanciaPartido relaciona competiciones con partidos reales.
-
-\- Los equipos utilizan nombres oficiales.
-
-\- Los resultados reales se almacenan mediante goles.
-
-
-
-\### Pronósticos
-
-
-
-\- Actualmente se utiliza L/E/V.
-
-\- El diseño debe permitir soportar resultado exacto en el futuro.
-
-\- ResultadoPronostico almacena resultado real, acierto y puntos.
-
-
-
-\### Resúmenes
-
-
-
-\- AF y AV se almacenan en ResumenParticipanteInstancia.
-
-\- DA NO pertenece al resumen individual.
-
-\- DA pertenece al enfrentamiento entre participantes.
-
-
-
-\### Supercopa
-
-
-
-\- Utiliza equipos temporales.
+\- MovimientoCategoria
 
 
 
@@ -666,23 +530,19 @@ Toda la lógica competitiva converge finalmente en un enfrentamiento entre parti
 
 
 
-\## Requisitos Funcionales Descubiertos
+\### Configuración centralizada
 
 
 
-\### Bloqueo de Boletas
+La entidad estratégica del sistema es:
 
 
 
-Las boletas deberán bloquearse automáticamente.
+CompetenciaConfig
 
 
 
-Objetivo inicial:
-
-
-
-\- una hora antes del primer partido válido de la instancia
+Debe convertirse progresivamente en la fuente principal de configuración de las competencias.
 
 
 
@@ -690,43 +550,31 @@ Objetivo inicial:
 
 
 
-\### Visibilidad de Boletas
+\## Hallazgo Arquitectónico Importante
 
 
 
-Antes del cierre:
+Julio 2026
 
 
 
-\- el participante sólo puede ver su propia boleta
+Después de una auditoría completa del proyecto se concluyó:
 
 
 
-Después del cierre:
+\### El modelo está más avanzado que los procesos
 
 
 
-\- todos los participantes pueden ver todas las boletas
+La mayoría de los modelos actuales son reutilizables y suficientemente flexibles.
 
 
 
-\---
+La principal deuda técnica NO está en los modelos.
 
 
 
-\### Partidos Decisivos
-
-
-
-El sistema deberá identificar:
-
-
-
-\- partidos donde dos participantes realizaron pronósticos distintos
-
-
-
-Estos partidos deberán destacarse visualmente.
+La principal deuda técnica está en los comandos de procesamiento.
 
 
 
@@ -734,41 +582,31 @@ Estos partidos deberán destacarse visualmente.
 
 
 
-\### Carga Administrativa
+\## Problema identificado
 
 
 
-Los administradores deberán poder:
+Muchos procesos siguen utilizando valores hardcodeados.
 
 
 
-\- crear boletas
-
-\- modificar boletas
-
-\- cargar boletas para terceros
+Ejemplos:
 
 
 
-\---
+\- cantidad de grupos
 
+\- cantidad de clasificados
 
+\- cantidad de ascensos
 
-\### Auditoría
+\- cantidad de descensos
 
+\- clasificación a copas
 
+\- estructura de instancias
 
-Deberá registrarse:
-
-
-
-\- propietario de la boleta
-
-\- usuario que realizó la carga
-
-\- fecha de creación
-
-\- fecha de modificación
+\- rondas de playoffs
 
 
 
@@ -776,33 +614,27 @@ Deberá registrarse:
 
 
 
-\### Escudos
+\## Dirección Actual del Proyecto
 
 
 
-Los equipos deberán soportar:
+La siguiente fase del backend no consiste en crear nuevos modelos.
 
 
 
-\- escudos oficiales
-
-\- almacenamiento local
+La prioridad es:
 
 
 
-\---
+\### Transformar el backend funcional en backend configurable.
 
 
 
-\### Zona Horaria
+Esto implica reemplazar reglas fijas por lectura desde:
 
 
 
-Pendiente configurar:
-
-
-
-America/Argentina/Buenos\_Aires
+CompetenciaConfig
 
 
 
@@ -810,37 +642,191 @@ America/Argentina/Buenos\_Aires
 
 
 
-\## Próximo Objetivo
+\## Campos estratégicos de CompetenciaConfig
 
 
 
-Implementar:
+Actualmente existen:
 
 
 
-\### Enfrentamiento
+\- cantidad\_participantes
+
+\- cantidad\_zonas
+
+\- clasificados
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+\- tiene\_playoff
+
+\- tiene\_penales
+
+\- usa\_tabla
+
+\- usa\_af
+
+\- usa\_av
+
+\- usa\_da
 
 
 
-Luego:
+Muchos procesos todavía no los utilizan.
 
 
 
-\### RankingTemporada
+La próxima etapa consiste en conectar la configuración con los procesos.
 
 
 
-\### ReglaClasificacion
+\---
 
 
 
-\### ResultadoCompetencia
+\## Próximas Prioridades
 
 
 
-El backend continúa siendo la prioridad actual.
+\### Prioridad 1
 
 
 
-El frontend se desarrollará posteriormente sobre una base funcional ya validada.
+Eliminar hardcodeos.
+
+
+
+Archivos candidatos:
+
+
+
+\- generar\_grupos\_copas.py
+
+\- calcular\_clasificaciones\_grupo.py
+
+\- calcular\_movimientos\_categoria.py
+
+
+
+\---
+
+
+
+\### Prioridad 2
+
+
+
+Refactorizar generación de instancias.
+
+
+
+Archivo principal:
+
+
+
+\- generar\_instancias\_2026.py
+
+
+
+\---
+
+
+
+\### Prioridad 3
+
+
+
+Motor de playoffs configurable.
+
+
+
+Objetivo:
+
+
+
+Generar rondas automáticamente según la configuración de la competencia.
+
+
+
+\---
+
+
+
+\## Frontend
+
+
+
+Todavía no es prioridad inmediata.
+
+
+
+Antes de iniciar frontend se desea:
+
+
+
+\- reducir hardcodeos
+
+\- consolidar CompetenciaConfig
+
+\- estabilizar procesos
+
+
+
+\---
+
+
+
+\## Estado del Proyecto
+
+
+
+Modelo de Dominio:
+
+90%
+
+
+
+Backend Funcional:
+
+90%
+
+
+
+Backend Configurable:
+
+60%
+
+
+
+Frontend:
+
+0%
+
+
+
+\---
+
+
+
+\## Regla de Trabajo Vigente
+
+
+
+Antes de implementar una funcionalidad importante:
+
+
+
+1\. Revisar si ya existe soporte en el modelo actual.
+
+2\. Revisar si CompetenciaConfig ya contempla el caso.
+
+3\. Revisar repositorios de referencia utilizados por el proyecto.
+
+4\. Evitar agregar nuevos modelos cuando el problema pueda resolverse mediante configuración.
+
+
+
+La prioridad actual es mejorar configurabilidad y reducir deuda técnica, no aumentar cantidad de código.
 

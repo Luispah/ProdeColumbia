@@ -2,39 +2,9 @@
 
 
 
-\## DOMINIO V1
+Fecha de actualización:
 
-
-
-Estado:
-
-
-
-✅ CONGELADO
-
-
-
-✅ VALIDADO CONTRA LOS REGLAMENTOS VIGENTES
-
-
-
-Incluye:
-
-
-
-\- Participantes
-
-\- Temporadas
-
-\- Competiciones
-
-\- Fútbol Real
-
-\- Pronósticos
-
-\- Resultados
-
-\- Resúmenes
+2026-07-27
 
 
 
@@ -42,13 +12,45 @@ Incluye:
 
 
 
-\## FASE 1 DJANGO
+\# Estado General
+
+
+
+Proyecto:
+
+ProdeColumbia
+
+
+
+Estado actual:
+
+
+
+✅ Modelo de dominio consolidado
+
+
+
+✅ Backend funcional
+
+
+
+🔄 Backend configurable en construcción
+
+
+
+⏳ Frontend pendiente
+
+
+
+\---
+
+
+
+\# Fase 1 - Base
 
 
 
 Estado:
-
-
 
 ✅ COMPLETADA
 
@@ -58,7 +60,41 @@ Implementado:
 
 
 
+\- Participante
+
+\- Categoria
+
+\- Temporada
+
 \- ParticipanteTemporada
+
+
+
+Resultado:
+
+
+
+Base de personas y temporadas validada.
+
+
+
+\---
+
+
+
+\# Fase 2 - Competiciones
+
+
+
+Estado:
+
+✅ COMPLETADA
+
+
+
+Implementado:
+
+
 
 \- PlantillaCompetencia
 
@@ -72,17 +108,23 @@ Implementado:
 
 
 
+Resultado:
+
+
+
+Motor básico de competiciones implementado.
+
+
+
 \---
 
 
 
-\## FASE 2 DJANGO
+\# Fase 3 - Fútbol Real
 
 
 
 Estado:
-
-
 
 ✅ COMPLETADA
 
@@ -102,15 +144,11 @@ Implementado:
 
 
 
-Validado mediante:
+Resultado:
 
 
 
-\- Equipos reales cargados
-
-\- Calendario Fecha 1
-
-\- Partidos reales cargados
+Separación completa entre fútbol real y lógica del Prode.
 
 
 
@@ -118,13 +156,11 @@ Validado mediante:
 
 
 
-\## FASE 3 DJANGO
+\# Fase 4 - Pronósticos
 
 
 
 Estado:
-
-
 
 ✅ COMPLETADA
 
@@ -142,19 +178,11 @@ Implementado:
 
 
 
-Validado mediante:
+Resultado:
 
 
 
-\- Pronósticos reales
-
-\- Resultados reales
-
-\- AF
-
-\- AV
-
-\- Puntos
+Flujo completo validado con datos reales.
 
 
 
@@ -162,33 +190,203 @@ Validado mediante:
 
 
 
-\## FASE 4 DJANGO
+\# Fase 5 - Competición
 
 
 
 Estado:
 
-
-
-🔄 EN CURSO
+✅ COMPLETADA
 
 
 
-Próximo objetivo:
+Implementado:
 
 
 
 \- Enfrentamiento
 
+\- Resolver enfrentamientos
+
+\- TablaInstancia
 
 
-Posteriormente:
+
+Resultado:
 
 
 
-\- EquipoTemporal
+Motor competitivo operativo.
 
-\- MiembroEquipoTemporal
+
+
+\---
+
+
+
+\# Fase 6 - Tablas
+
+
+
+Estado:
+
+✅ COMPLETADA
+
+
+
+Implementado:
+
+
+
+\- TablaCompetencia
+
+\- TablaTemporada
+
+\- Actualización de posiciones
+
+
+
+Resultado:
+
+
+
+Sistema de rankings y acumulados operativo.
+
+
+
+\---
+
+
+
+\# Fase 7 - Resultados Deportivos
+
+
+
+Estado:
+
+✅ COMPLETADA
+
+
+
+Implementado:
+
+
+
+\- ResultadoTemporada
+
+\- MovimientoCategoria
+
+
+
+Resultado:
+
+
+
+Sistema de:
+
+
+
+\- clasificación a copas
+
+\- ascensos
+
+\- descensos
+
+
+
+funcionando.
+
+
+
+\---
+
+
+
+\# Fase 8 - Copas
+
+
+
+Estado:
+
+✅ IMPLEMENTADA (V1)
+
+
+
+Implementado:
+
+
+
+\- GrupoCompetencia
+
+\- ParticipacionGrupo
+
+\- TablaGrupo
+
+\- ClasificacionGrupo
+
+\- LlaveCompetencia
+
+
+
+Resultado:
+
+
+
+Flujo:
+
+
+
+Participación
+
+
+
+↓
+
+
+
+Grupos
+
+
+
+↓
+
+
+
+Clasificaciones
+
+
+
+↓
+
+
+
+Playoffs
+
+
+
+↓
+
+
+
+Campeón
+
+
+
+validado.
+
+
+
+\---
+
+
+
+\# Fase 9 - Refactor Configuración
+
+
+
+Estado:
+
+🔄 ACTUAL
 
 
 
@@ -196,7 +394,7 @@ Objetivo:
 
 
 
-Representar duelos directos entre participantes y soportar competiciones por equipos.
+Eliminar hardcodeos y utilizar CompetenciaConfig como fuente de verdad.
 
 
 
@@ -204,13 +402,251 @@ Representar duelos directos entre participantes y soportar competiciones por equ
 
 
 
-\## FASE 5 DJANGO
+\## Prioridad 1
+
+
+
+Refactorizar:
+
+
+
+\### generar\_grupos\_copas.py
+
+
+
+Actualmente:
+
+
+
+\- 4 grupos fijos
+
+
+
+Objetivo:
+
+
+
+Utilizar:
+
+
+
+\- cantidad\_zonas
+
+
+
+\---
+
+
+
+\### calcular\_clasificaciones\_grupo.py
+
+
+
+Actualmente:
+
+
+
+\- clasifican 2
+
+
+
+Objetivo:
+
+
+
+Utilizar:
+
+
+
+\- clasificados
+
+
+
+\---
+
+
+
+\### calcular\_movimientos\_categoria.py
+
+
+
+Actualmente:
+
+
+
+\- 3 ascensos
+
+\- 3 descensos
+
+
+
+Objetivo:
+
+
+
+Utilizar:
+
+
+
+\- cantidad\_ascensos
+
+\- cantidad\_descensos
+
+
+
+\---
+
+
+
+\# Fase 10 - Instancias Dinámicas
 
 
 
 Estado:
 
+⏳ PENDIENTE
 
+
+
+Objetivo:
+
+
+
+Eliminar estructuras de competencia hardcodeadas.
+
+
+
+Archivo principal:
+
+
+
+\- generar\_instancias\_2026.py
+
+
+
+Situación actual:
+
+
+
+Cada competencia define manualmente:
+
+
+
+\- fechas
+
+\- rondas
+
+\- playoffs
+
+
+
+Objetivo futuro:
+
+
+
+Generarlas mediante configuración.
+
+
+
+\---
+
+
+
+\# Fase 11 - Playoffs Dinámicos
+
+
+
+Estado:
+
+⏳ PENDIENTE
+
+
+
+Objetivo:
+
+
+
+Generar automáticamente:
+
+
+
+\- llaves
+
+\- rondas
+
+\- finales
+
+
+
+a partir de:
+
+
+
+\- cantidad\_participantes
+
+\- clasificados
+
+\- configuración de competencia
+
+
+
+Ejemplos soportados:
+
+
+
+\- Supercopa
+
+\- Repechaje
+
+\- Libertadores
+
+\- Sudamericana
+
+\- Copa Argentina
+
+
+
+sin cambiar código.
+
+
+
+\---
+
+
+
+\# Fase 12 - Automatización de Temporadas
+
+
+
+Estado:
+
+⏳ PENDIENTE
+
+
+
+Objetivos:
+
+
+
+\- generación automática de nueva temporada
+
+\- aplicación automática de ascensos
+
+\- aplicación automática de descensos
+
+\- migración de participantes
+
+
+
+\---
+
+
+
+\# Fase 13 - Equipos Temporales
+
+
+
+Estado:
 
 ⏳ PENDIENTE
 
@@ -220,11 +656,37 @@ Implementar:
 
 
 
-\- RankingTemporada
+\- EquipoTemporal
 
-\- ReglaClasificacion
+\- MiembroEquipoTemporal
 
-\- ResultadoCompetencia
+
+
+Necesario para:
+
+
+
+\- Supercopa
+
+\- competiciones por equipos
+
+
+
+\---
+
+
+
+\# Funcionalidades Pendientes
+
+
+
+\## Bloqueo de Boletas
+
+
+
+Prioridad:
+
+Alta
 
 
 
@@ -232,15 +694,7 @@ Objetivo:
 
 
 
-\- tablas anuales
-
-\- ascensos
-
-\- descensos
-
-\- clasificación a copas
-
-\- históricos
+Bloquear edición automáticamente antes del inicio de la instancia.
 
 
 
@@ -248,31 +702,7 @@ Objetivo:
 
 
 
-\## FUNCIONALIDAD PENDIENTE (ALTA PRIORIDAD)
-
-
-
-\### Bloqueo de Boletas
-
-
-
-Implementar cierre automático.
-
-
-
-Objetivo inicial:
-
-
-
-\- 1 hora antes del primer partido válido.
-
-
-
-\---
-
-
-
-\### Visibilidad de Boletas
+\## Visibilidad de Boletas
 
 
 
@@ -280,7 +710,7 @@ Antes del cierre:
 
 
 
-\- sólo el propietario visualiza la boleta
+\- cada participante sólo ve su boleta
 
 
 
@@ -288,7 +718,7 @@ Después del cierre:
 
 
 
-\- todos los participantes pueden visualizar todas las boletas
+\- todos ven todas las boletas
 
 
 
@@ -296,41 +726,7 @@ Después del cierre:
 
 
 
-\### Partidos Decisivos
-
-
-
-Identificar partidos donde dos participantes tienen pronósticos diferentes.
-
-
-
-Mostrar visualmente dichos partidos.
-
-
-
-\---
-
-
-
-\### Carga Administrativa
-
-
-
-Permitir:
-
-
-
-\- creación de boletas por terceros
-
-\- modificación de boletas por terceros
-
-
-
-\---
-
-
-
-\### Auditoría
+\## Auditoría
 
 
 
@@ -338,13 +734,13 @@ Registrar:
 
 
 
-\- propietario de la boleta
+\- propietario
 
-\- usuario que efectuó la carga
+\- usuario cargador
 
-\- fecha de creación
+\- fecha creación
 
-\- fecha de modificación
+\- fecha modificación
 
 
 
@@ -352,7 +748,19 @@ Registrar:
 
 
 
-\### Zona Horaria Argentina
+\## Partidos Decisivos
+
+
+
+Detectar automáticamente partidos donde dos participantes difieren en sus pronósticos.
+
+
+
+\---
+
+
+
+\## Zona Horaria Argentina
 
 
 
@@ -368,7 +776,7 @@ America/Argentina/Buenos\_Aires
 
 
 
-\### Escudos
+\## Escudos
 
 
 
@@ -386,89 +794,25 @@ Soporte para:
 
 
 
-\## INTEGRACIONES FUTURAS
-
-
-
-\### Importación Automática
-
-
-
-\- Fixture
-
-\- Resultados
-
-\- Horarios
-
-
-
-Origen previsto:
-
-
-
-\- APIs de fútbol
-
-
-
-\---
-
-
-
-\### Actualización Automática
-
-
-
-\- resultados de partidos
-
-\- estados de encuentros
-
-\- horarios
-
-
-
-\---
-
-
-
-\## FRONTEND
+\# Frontend
 
 
 
 Estado:
 
-
-
 ⏳ PENDIENTE
 
 
 
-\### Administrador
+Se iniciará después de consolidar:
 
 
 
-\- gestión de temporadas
+\- CompetenciaConfig
 
-\- competiciones
+\- Instancias dinámicas
 
-\- fixture
-
-\- resultados
-
-\- participantes
-
-
-
-\### Participante
-
-
-
-\- carga de boletas
-
-\- visualización de resultados
-
-\- historial
-
-\- estadísticas
+\- Playoffs dinámicos
 
 
 
@@ -476,11 +820,61 @@ Estado:
 
 
 
-\## ESTADÍSTICAS E HISTÓRICOS
+\## Portal Administrador
 
 
 
-\### Hall of Fame
+\- temporadas
+
+\- competencias
+
+\- participantes
+
+\- resultados
+
+\- configuraciones
+
+
+
+\---
+
+
+
+\## Portal Participante
+
+
+
+\- carga de boletas
+
+\- resultados
+
+\- tablas
+
+\- estadísticas
+
+\- históricos
+
+
+
+\---
+
+
+
+\# Estadísticas e Históricos
+
+
+
+Estado:
+
+⏳ PENDIENTE
+
+
+
+Implementar:
+
+
+
+\## Hall of Fame
 
 
 
@@ -492,7 +886,7 @@ Estado:
 
 
 
-\### Rivalidades
+\## Rivalidades
 
 
 
@@ -500,13 +894,13 @@ Estado:
 
 
 
-\### Estadísticas Avanzadas
+\## Métricas
 
 
 
-\- AF históricos
+\- AF histórico
 
-\- AV históricos
+\- AV histórico
 
 \- efectividad
 
@@ -520,57 +914,49 @@ Estado:
 
 
 
-\## ESTADO ACTUAL DEL PROYECTO
+\# Estado Actual Estimado
 
 
 
-El sistema ya permite:
+Modelo de Dominio:
+
+90%
 
 
 
-Participante
+Backend Funcional:
+
+90%
 
 
 
-↓
+Backend Configurable:
+
+60%
 
 
 
-Pronostico
+Frontend:
+
+0%
 
 
 
-↓
+\---
 
 
 
-PartidoReal
+\# Objetivo Inmediato
 
 
 
-↓
+Eliminar hardcodeos.
 
 
 
-ResultadoPronostico
+Prioridad absoluta:
 
 
 
-↓
-
-
-
-ResumenParticipanteInstancia
-
-
-
-con datos persistidos y validados en base de datos.
-
-
-
-Próximo desarrollo principal:
-
-
-
-Enfrentamiento.
+Convertir CompetenciaConfig en la fuente única de configuración del sistema.
 
