@@ -5,6 +5,7 @@ from .models import (
     Categoria,
     Competencia,
     CompetenciaConfig,
+    Enfrentamiento,
     EquipoReal,
     InstanciaCompetencia,
     InstanciaPartido,
@@ -16,6 +17,10 @@ from .models import (
     Pronostico,
     ResumenParticipanteInstancia,
     ResultadoPronostico,
+    ResultadoTemporada,
+    TablaCompetencia,
+    TablaInstancia,
+    TablaTemporada,
     Temporada,
     Torneo,
 )
@@ -40,6 +45,120 @@ admin.site.register(PartidoReal)
 admin.site.register(Pronostico)
 admin.site.register(ResultadoPronostico)
 admin.site.register(ResumenParticipanteInstancia)
+
+admin.site.register(Enfrentamiento)
+
+
+@admin.register(TablaInstancia)
+class TablaInstanciaAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "participante_temporada",
+        "instancia",
+        "puntos",
+        "pj",
+        "pg",
+        "pe",
+        "pp",
+        "af",
+        "av",
+    )
+
+    ordering = (
+        "-puntos",
+        "-af",
+        "-av",
+    )
+
+    list_filter = (
+        "instancia",
+    )
+
+    search_fields = (
+        "participante_temporada__participante__nombre",
+    )
+
+
+@admin.register(TablaCompetencia)
+class TablaCompetenciaAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "participante_temporada",
+        "competencia",
+        "puntos",
+        "pj",
+        "pg",
+        "pe",
+        "pp",
+        "af",
+        "av",
+    )
+
+    ordering = (
+        "-puntos",
+        "-af",
+        "-av",
+    )
+
+    list_filter = (
+        "competencia",
+    )
+
+    search_fields = (
+        "participante_temporada__participante__nombre",
+    )
+
+
+@admin.register(TablaTemporada)
+class TablaTemporadaAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "posicion",
+        "participante_temporada",
+        "temporada",
+        "puntos",
+        "pj",
+        "pg",
+        "pe",
+        "pp",
+        "af",
+        "av",
+    )
+
+    ordering = (
+        "posicion",
+    )
+
+    list_filter = (
+        "temporada",
+    )
+
+    search_fields = (
+        "participante_temporada__participante__nombre",
+    )
+
+
+@admin.register(ResultadoTemporada)
+class ResultadoTemporadaAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "participante_temporada",
+        "temporada",
+        "resultado",
+    )
+
+    ordering = (
+        "resultado",
+    )
+
+    list_filter = (
+        "temporada",
+        "resultado",
+    )
+
+    search_fields = (
+        "participante_temporada__participante__nombre",
+    )
 
 
 @admin.register(Participante)

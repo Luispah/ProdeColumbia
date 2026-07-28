@@ -648,3 +648,597 @@ class ResumenParticipanteInstancia(models.Model):
             f"{self.participante_temporada} - "
             f"{self.instancia}"
         )
+
+
+class Enfrentamiento(models.Model):
+
+    ESTADOS = [
+        ("PENDIENTE", "Pendiente"),
+        ("FINALIZADO", "Finalizado"),
+    ]
+
+    instancia = models.ForeignKey(
+        InstanciaCompetencia,
+        on_delete=models.PROTECT
+    )
+
+    participante_local = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT,
+        related_name="enfrentamientos_local"
+    )
+
+    participante_visitante = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT,
+        related_name="enfrentamientos_visitante"
+    )
+
+    af_local = models.IntegerField(
+        default=0
+    )
+
+    af_visitante = models.IntegerField(
+        default=0
+    )
+
+    av_local = models.IntegerField(
+        default=0
+    )
+
+    av_visitante = models.IntegerField(
+        default=0
+    )
+
+    estado = models.CharField(
+        max_length=20,
+        choices=ESTADOS,
+        default="PENDIENTE"
+    )
+
+    RESULTADOS = [
+        ("LOCAL", "Local"),
+        ("VISITANTE", "Visitante"),
+        ("EMPATE", "Empate"),
+    ]
+
+    resultado = models.CharField(
+        max_length=20,
+        choices=RESULTADOS,
+        blank=True,
+        default=""
+    )
+
+    puntos_local = models.IntegerField(
+        default=0
+    )
+
+    puntos_visitante = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+        verbose_name = "Enfrentamiento"
+        verbose_name_plural = "Enfrentamientos"
+        unique_together = (
+            "instancia",
+            "participante_local",
+            "participante_visitante",
+        )
+
+    def __str__(self):
+        return (
+            f"{self.participante_local} vs "
+            f"{self.participante_visitante}"
+        )
+
+
+class TablaInstancia(models.Model):
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    instancia = models.ForeignKey(
+        InstanciaCompetencia,
+        on_delete=models.PROTECT
+    )
+
+    pj = models.IntegerField(
+        default=0
+    )
+
+    pg = models.IntegerField(
+        default=0
+    )
+
+    pe = models.IntegerField(
+        default=0
+    )
+
+    pp = models.IntegerField(
+        default=0
+    )
+
+    puntos = models.IntegerField(
+        default=0
+    )
+
+    af = models.IntegerField(
+        default=0
+    )
+
+    av = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+        verbose_name = "Tabla Instancia"
+        verbose_name_plural = "Tabla Instancias"
+        unique_together = (
+            "participante_temporada",
+            "instancia",
+        )
+
+    def __str__(self):
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.instancia}"
+        )
+
+
+class TablaCompetencia(models.Model):
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    competencia = models.ForeignKey(
+        Competencia,
+        on_delete=models.PROTECT
+    )
+
+    pj = models.IntegerField(
+        default=0
+    )
+
+    pg = models.IntegerField(
+        default=0
+    )
+
+    pe = models.IntegerField(
+        default=0
+    )
+
+    pp = models.IntegerField(
+        default=0
+    )
+
+    puntos = models.IntegerField(
+        default=0
+    )
+
+    af = models.IntegerField(
+        default=0
+    )
+
+    av = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+
+        verbose_name = "Tabla Competencia"
+        verbose_name_plural = "Tablas Competencia"
+
+        unique_together = (
+            "participante_temporada",
+            "competencia",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.competencia}"
+        )
+
+
+class TablaTemporada(models.Model):
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    temporada = models.ForeignKey(
+        Temporada,
+        on_delete=models.PROTECT
+    )
+
+    posicion = models.IntegerField(
+        default=0
+    )
+
+    pj = models.IntegerField(
+        default=0
+    )
+
+    pg = models.IntegerField(
+        default=0
+    )
+
+    pe = models.IntegerField(
+        default=0
+    )
+
+    pp = models.IntegerField(
+        default=0
+    )
+
+    puntos = models.IntegerField(
+        default=0
+    )
+
+    af = models.IntegerField(
+        default=0
+    )
+
+    av = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+
+        verbose_name = "Tabla Temporada"
+        verbose_name_plural = "Tablas Temporada"
+
+        unique_together = (
+            "participante_temporada",
+            "temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.temporada}"
+        )
+
+
+class ResultadoTemporada(models.Model):
+
+    RESULTADOS = [
+        ("NINGUNO", "Ninguno"),
+        ("LIBERTADORES", "Libertadores"),
+        ("SUDAMERICANA", "Sudamericana"),
+        ("ASCENSO", "Ascenso"),
+        ("DESCENSO", "Descenso"),
+        ("REPECHAJE", "Repechaje"),
+    ]
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    temporada = models.ForeignKey(
+        Temporada,
+        on_delete=models.PROTECT
+    )
+
+    resultado = models.CharField(
+        max_length=20,
+        choices=RESULTADOS,
+        default="NINGUNO"
+    )
+
+    class Meta:
+
+        verbose_name = "Resultado Temporada"
+        verbose_name_plural = "Resultados Temporada"
+
+        unique_together = (
+            "participante_temporada",
+            "temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.resultado}"
+        )
+
+class MovimientoCategoria(models.Model):
+
+    MOVIMIENTOS = [
+        ("ASCENSO", "Ascenso"),
+        ("DESCENSO", "Descenso"),
+        ("MANTIENE", "Mantiene"),
+    ]
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    temporada = models.ForeignKey(
+        Temporada,
+        on_delete=models.PROTECT
+    )
+
+    movimiento = models.CharField(
+        max_length=20,
+        choices=MOVIMIENTOS
+    )
+
+    categoria_origen = models.ForeignKey(
+        Categoria,
+        on_delete=models.PROTECT,
+        related_name="movimientos_origen"
+    )
+
+    categoria_destino = models.ForeignKey(
+        Categoria,
+        on_delete=models.PROTECT,
+        related_name="movimientos_destino"
+    )
+
+    class Meta:
+
+        verbose_name = "Movimiento Categoria"
+        verbose_name_plural = "Movimientos Categoria"
+
+        unique_together = (
+            "participante_temporada",
+            "temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.movimiento}"
+        )
+
+
+class GrupoCompetencia(models.Model):
+
+    competencia = models.ForeignKey(
+        Competencia,
+        on_delete=models.PROTECT
+    )
+
+    nombre = models.CharField(
+        max_length=50
+    )
+
+    orden = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+
+        verbose_name = "Grupo Competencia"
+        verbose_name_plural = "Grupos Competencia"
+
+        unique_together = (
+            "competencia",
+            "nombre",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.competencia}"
+            f" - "
+            f"{self.nombre}"
+        )
+
+
+class ParticipacionGrupo(models.Model):
+
+    grupo = models.ForeignKey(
+        GrupoCompetencia,
+        on_delete=models.PROTECT
+    )
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    class Meta:
+
+        verbose_name = "Participacion Grupo"
+        verbose_name_plural = "Participaciones Grupo"
+
+        unique_together = (
+            "grupo",
+            "participante_temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.participante_temporada}"
+            f" - "
+            f"{self.grupo}"
+        )
+
+
+class TablaGrupo(models.Model):
+
+    grupo = models.ForeignKey(
+        GrupoCompetencia,
+        on_delete=models.PROTECT
+    )
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    posicion = models.IntegerField(
+        default=0
+    )
+
+    pj = models.IntegerField(
+        default=0
+    )
+
+    pg = models.IntegerField(
+        default=0
+    )
+
+    pe = models.IntegerField(
+        default=0
+    )
+
+    pp = models.IntegerField(
+        default=0
+    )
+
+    puntos = models.IntegerField(
+        default=0
+    )
+
+    af = models.IntegerField(
+        default=0
+    )
+
+    av = models.IntegerField(
+        default=0
+    )
+
+    class Meta:
+
+        verbose_name = "Tabla Grupo"
+        verbose_name_plural = "Tablas Grupo"
+
+        unique_together = (
+            "grupo",
+            "participante_temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.grupo}"
+            f" - "
+            f"{self.participante_temporada}"
+        )
+
+
+class ClasificacionGrupo(models.Model):
+
+    RESULTADOS = [
+        ("CLASIFICADO", "Clasificado"),
+        ("ELIMINADO", "Eliminado"),
+    ]
+
+    grupo = models.ForeignKey(
+        GrupoCompetencia,
+        on_delete=models.PROTECT
+    )
+
+    participante_temporada = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT
+    )
+
+    posicion = models.IntegerField(
+        default=0
+    )
+
+    resultado = models.CharField(
+        max_length=20,
+        choices=RESULTADOS
+    )
+
+    class Meta:
+
+        verbose_name = "Clasificacion Grupo"
+        verbose_name_plural = "Clasificaciones Grupo"
+
+        unique_together = (
+            "grupo",
+            "participante_temporada",
+        )
+
+    def __str__(self):
+
+        return (
+            f"{self.grupo}"
+            f" - "
+            f"{self.participante_temporada}"
+        )
+
+
+class LlaveCompetencia(models.Model):
+
+    ETAPAS = [
+        ("OCTAVOS", "Octavos"),
+        ("CUARTOS", "Cuartos"),
+        ("SEMIFINAL", "Semifinal"),
+        ("FINAL", "Final"),
+    ]
+
+    competencia = models.ForeignKey(
+        Competencia,
+        on_delete=models.PROTECT
+    )
+
+    etapa = models.CharField(
+        max_length=20,
+        choices=ETAPAS
+    )
+
+    orden = models.IntegerField(
+        default=0
+    )
+
+    participante_1 = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT,
+        related_name="llaves_1"
+    )
+
+    participante_2 = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT,
+        related_name="llaves_2"
+    )
+
+    ganador = models.ForeignKey(
+        ParticipanteTemporada,
+        on_delete=models.PROTECT,
+        related_name="llaves_ganadas",
+        null=True,
+        blank=True,
+    )
+
+    resuelta = models.BooleanField(
+        default=False
+    )
+
+    class Meta:
+
+        verbose_name = "Llave Competencia"
+        verbose_name_plural = "Llaves Competencia"
+
+    def __str__(self):
+
+        return (
+            f"{self.competencia}"
+            f" - "
+            f"{self.etapa}"
+        )
