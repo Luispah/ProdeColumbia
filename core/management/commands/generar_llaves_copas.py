@@ -34,7 +34,10 @@ class Command(BaseCommand):
             clasificados = list(
                 ClasificacionGrupo.objects.filter(
                     grupo__competencia=competencia,
-                    resultado="CLASIFICADO",
+                    resultado__in=[
+                        "CLASIFICADO",
+                        "MEJOR_TERCERO",
+                    ],
                 ).order_by(
                     "grupo__orden",
                     "posicion",
@@ -63,6 +66,13 @@ class Command(BaseCommand):
                 )
 
                 creadas += 1
+
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"{competencia.nombre}: "
+                    f"{len(clasificados)} clasificados"
+                )
+            )
 
         self.stdout.write(
             self.style.SUCCESS(
