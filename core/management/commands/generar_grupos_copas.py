@@ -1,10 +1,12 @@
 from django.core.management.base import BaseCommand
 
 from core.models import (
+    ClasificacionGrupo,
     Competencia,
     GrupoCompetencia,
     ParticipacionCompetencia,
     ParticipacionGrupo,
+    TablaGrupo,
 )
 
 
@@ -33,20 +35,29 @@ class Command(BaseCommand):
 
             try:
                 config = competencia.competenciaconfig
-            except Competencia.DoesNotExist:
-                continue
+
             except Exception:
                 continue
 
             cantidad_zonas = config.cantidad_zonas
 
             if cantidad_zonas <= 0:
+
                 self.stdout.write(
                     self.style.WARNING(
                         f"{competencia.nombre}: cantidad_zonas <= 0"
                     )
                 )
+
                 continue
+
+            ClasificacionGrupo.objects.filter(
+                grupo__competencia=competencia
+            ).delete()
+
+            TablaGrupo.objects.filter(
+                grupo__competencia=competencia
+            ).delete()
 
             ParticipacionGrupo.objects.filter(
                 grupo__competencia=competencia
@@ -69,6 +80,7 @@ class Command(BaseCommand):
                 )
 
                 grupos.append(grupo)
+
                 total_grupos += 1
 
             participantes = list(

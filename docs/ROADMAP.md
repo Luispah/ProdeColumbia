@@ -2,7 +2,7 @@
 
 
 
-Fecha de actualizaciÃ³n:
+Fecha de actualización:
 
 2026-07-27
 
@@ -26,7 +26,8 @@ Estado actual:
 
 
 
-âœ… Modelo de dominio consolidado
+
+œ… Modelo de dominio consolidado
 
 
 
@@ -960,3 +961,6 @@ Prioridad absoluta:
 
 Convertir CompetenciaConfig en la fuente Ãºnica de configuraciÃ³n del sistema.
 
+
+
+Implementar clasificación de mejores terceros para Libertadores y Sudamericana.

@@ -59,9 +59,9 @@ class Command(BaseCommand):
             CompetenciaConfig.objects.get_or_create(
                 competencia=competencia,
                 defaults={
-                    "cantidad_participantes": 16,
-                    "cantidad_zonas": 4,
-                    "clasificados": 8,
+                    "cantidad_participantes": 24,
+                    "cantidad_zonas": 6,
+                    "clasificados":16,
                     "cantidad_partidos_boleta": 15,
                     "usa_tabla": True,
                     "usa_af": True,

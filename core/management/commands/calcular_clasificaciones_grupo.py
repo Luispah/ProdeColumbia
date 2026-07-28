@@ -36,6 +36,7 @@ class Command(BaseCommand):
 
                 resultado = "ELIMINADO"
 
+                # Clasificados directos
                 if tabla.posicion <= 2:
 
                     resultado = "CLASIFICADO"
