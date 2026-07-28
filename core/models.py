@@ -1142,6 +1142,7 @@ class ClasificacionGrupo(models.Model):
 
     RESULTADOS = [
         ("CLASIFICADO", "Clasificado"),
+        ("MEJOR_TERCERO", "Mejor tercero"),
         ("ELIMINADO", "Eliminado"),
     ]
 
@@ -1195,6 +1196,13 @@ class LlaveCompetencia(models.Model):
     competencia = models.ForeignKey(
         Competencia,
         on_delete=models.PROTECT
+    )
+
+    instancia = models.ForeignKey(
+        InstanciaCompetencia,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
     )
 
     etapa = models.CharField(

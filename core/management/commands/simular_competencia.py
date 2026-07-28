@@ -52,7 +52,17 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                "5. Resolviendo enfrentamientos..."
+                "5. Actualizando enfrentamientos..."
+            )
+        )
+
+        call_command(
+            "actualizar_enfrentamientos_desde_resumenes"
+        )
+
+        self.stdout.write(
+            self.style.SUCCESS(
+                "6. Resolviendo enfrentamientos..."
             )
         )
 
@@ -62,7 +72,7 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                "6. Generando tablas por instancia..."
+                "7. Generando tablas por instancia..."
             )
         )
 
@@ -72,7 +82,7 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                "7. Generando tabla competencia..."
+                "8. Generando tabla competencia..."
             )
         )
 
@@ -82,7 +92,7 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                "8. Generando tabla temporada..."
+                "9. Generando tabla temporada..."
             )
         )
 
